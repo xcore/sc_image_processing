@@ -1,12 +1,13 @@
 .. _Object_Localization_Quickstart:
 
 Object Localization Demo Quickstart Guide
-========================================
+=========================================
 
 sw_image_processing demo : Quick Start Guide
-----------------------------------------------
+--------------------------------------------
 
 In this demonstration we use the following hardware and software:
+
   * XA-SK-SCR480 Slice Card,
   * XA-SK-SDRAM Slice Card,
   * module_image_processing,
