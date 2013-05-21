@@ -17,7 +17,7 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 				c_dm :> imgWidthWords;
 				c_dm :> imgHeight;
 			}
-			imgHandle = register_image(c_dc, imgWidthWords, imgHeight);
+			imgHandle = display_controller_register_image(c_dc, imgWidthWords, imgHeight);
 			c_dm <: imgHandle;
 			break;
 
@@ -27,8 +27,8 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 				c_dm :> line;
 				c_dm :> buffer_ptr;
 			}
-			image_read_line_p(c_dc, line, imgHandle, buffer_ptr);
-			wait_until_idle_p(c_dc, buffer_ptr);
+			display_controller_image_read_line_p(c_dc, line, imgHandle, buffer_ptr);
+			display_controller_wait_until_idle_p(c_dc, buffer_ptr);
 			c_dm <: (unsigned)RD_OVER;
 			break;
 
@@ -38,8 +38,8 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 				c_dm :> line;
 				c_dm :> buffer_ptr;	
 			}
-			image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
-			wait_until_idle_p(c_dc, buffer_ptr);
+			display_controller_image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
+			display_controller_wait_until_idle_p(c_dc, buffer_ptr);
 
 			break;
 
@@ -48,19 +48,19 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 
 			for (unsigned line=0; line<LCD_HEIGHT; line++){
 				c_dm :> buffer_ptr;
-				image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
-				wait_until_idle_p(c_dc, buffer_ptr);
+				display_controller_image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
+				display_controller_wait_until_idle_p(c_dc, buffer_ptr);
 			}
 			break;
 
 		case FB_INIT:
 			c_dm :> fbHandle;
-			frame_buffer_init(c_dc, fbHandle);
+			display_controller_frame_buffer_init(c_dc, fbHandle);
 			break;
 
 		case FB_COMMIT:
 			c_dm :> fbHandle;
-			frame_buffer_commit(c_dc, fbHandle);
+			display_controller_frame_buffer_commit(c_dc, fbHandle);
 			break;
 
 		default:
