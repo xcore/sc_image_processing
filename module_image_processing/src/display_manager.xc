@@ -36,7 +36,7 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 			slave {
 				c_dm :> imgHandle;
 				c_dm :> line;
-				c_dm :> buffer_ptr;	//TODO: check. If not working, receive values thro channel as above
+				c_dm :> buffer_ptr;	
 			}
 			image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
 			wait_until_idle_p(c_dc, buffer_ptr);

@@ -15,8 +15,8 @@
 int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
 {
 	int hist_range,min,max;
-	int binSum;								// Sum of bin values of normalised histogram
-	int MG;									// Global Intensity Mean equivalent
+	int binSum;							// Sum of bin values of normalised histogram
+	int MG;								// Global Intensity Mean equivalent
 	int P[256],m1_diff[256],m2[256],m_var[256];	// Class means and Between-class variance
 	int i,j,k;
 	int kStar=0;							// Otsu's threshold
