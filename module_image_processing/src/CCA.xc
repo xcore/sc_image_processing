@@ -84,7 +84,15 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 			red = (rgb565 & 0x1F) << 3; //Red component
 			Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
 
-			if(Y>binThreshold) //Binarisation through thresholding
+			//Binarisation through thresholding
+			if (BRIGHT_OBJ_DARK_BG){	//Get 1-pixels based on object and background type
+				if (Y>binThreshold) Y = 255; else Y = 0;
+			}
+			else {
+				if (Y<=binThreshold) Y = 255; else Y = 0;
+			}
+
+			if(Y) //Connected component analysis of 1-pixels
 			{
 
 				if(A==0 && B==0 && C==0 && D==0) //Check A,B,C,D are background pixels

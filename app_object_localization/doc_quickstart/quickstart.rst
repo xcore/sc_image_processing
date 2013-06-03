@@ -74,5 +74,6 @@ Next Steps
  #. Try changing the files that are loaded from the host. To do this, generate an image (should have bright objects on a dark background), save it in ``tga`` format uncompressed. Save the file(s) into ``images`` folder of ``app_object_localization`` directory within your workspace. Now, change the ``IMAGE_COUNT`` and add the name of your new image to the array ``images`` defined in ``app_conf.h``. Ensure the filename is less than 30 characters long.
  #. The color of bounding boxes on objects can be changed from green by redefining ``BOX_COLOR``. 
  #. ``SIZE_THRESHOLD`` controls the size in pixels of spurious objects to be ignored. 
+ #. If the image contains dark objects on a bright background, the define ``BRIGHT_OBJ_DARK_BG`` in ``CCA_conf.h`` should be assigned the value 0. 
 
     

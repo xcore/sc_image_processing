@@ -16,6 +16,8 @@
 #include "CCA_conf.h"
 #include "display_manager_conf.h"
 
+#define TIMER_FREQ 100000000	// Timer frequency in Hz
+
 on tile[0] : lcd_ports lcdports = {
   XS1_PORT_1I, XS1_PORT_1L, XS1_PORT_16B, XS1_PORT_1J, XS1_PORT_1K, XS1_CLKBLK_1 };
 on tile[0] : sdram_ports sdramports = {
@@ -152,6 +154,7 @@ void app(chanend c_dispMan[])
 	int threshold=0, threshold_old=0, nCC=0, nCC_old=0;
 	timer t;
 	unsigned time1, time2, maxTime=0;
+	unsigned entryTime[IMAGE_COUNT], exitTime[IMAGE_COUNT], cycles, frameRate;
 
 	// Load images to SDRAM
 	printstrln("Loading images. Please wait ........");
@@ -164,6 +167,8 @@ void app(chanend c_dispMan[])
 	for (int i=0; i<IMAGE_COUNT+2; i++){
 
 		t :> time1;
+		if (i<IMAGE_COUNT) entryTime[i] = time1;
+
 		par{
 			if (i<IMAGE_COUNT)
 				threshold = image_processing_otsu_threshold(c_dispMan[1], image[i], imgHeight[i], imgWidth[i]);
@@ -186,12 +191,25 @@ void app(chanend c_dispMan[])
 
 		t :> time2;
 		if ((time2-time1)>maxTime) maxTime = time2-time1;
+		if ((i-2)>=0) exitTime[i-2] = time2;
 
 	}
 
+	printstr ("\nImage		Processing time (ms)\n");
+	for (int i=0; i<IMAGE_COUNT; i++){
+		printint(i+1);
+		cycles = exitTime[i]-entryTime[i];
+		printstr("\t\t"); printint(cycles/100000);
+		printstr("\n");
+	}
 	printstr ("\nMaximum time taken by the pipeline stages: ");
-	printint(maxTime);
-	printstrln (" clk cycles (x 10^(-8) seconds)");
+	printint(maxTime/100000);
+	printstrln (" ms");
+	frameRate = TIMER_FREQ/maxTime;
+	printstr ("Frame rate: ");
+	printint (frameRate);
+	printstr("\n");
+
 
 	// Display images for touch events
 	c_dispMan[0] <: FB_INIT;
