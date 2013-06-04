@@ -86,6 +86,8 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 				c_dm <: boundBox[cc].xMin;
 				c_dm <: bufferPtr;
 			}
+			c_dm <: RD_WAIT;
+			c_dm <: bufferPtr;
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)
@@ -105,6 +107,8 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 					c_dm <: line;
 					c_dm <: bufferPtr;
 				}
+				c_dm <: RD_WAIT;
+				c_dm <: bufferPtr;
 				c_dm :> unsigned;
 
 				c = boundBox[cc].yMin;
@@ -126,6 +130,8 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 				c_dm <: boundBox[cc].xMax;
 				c_dm <: bufferPtr;
 			}
+			c_dm <: RD_WAIT;
+			c_dm <: bufferPtr;
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)

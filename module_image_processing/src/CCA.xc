@@ -40,8 +40,8 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 	int mergerTable[IMAGE_PROCESSING_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
 	int rowBuff[2*LCD_ROW_WORDS]; 		//Row buffer for storing one row of image
 	unsigned i,j,e,e1;
-	unsigned buffer[LCD_ROW_WORDS];
-	intptr_t bufferPtr;
+	unsigned buffer[2][LCD_ROW_WORDS];	// Double buffer for storing two rows
+	intptr_t bufferPtr[2];
 
 
 	//INITIALISATION
@@ -61,24 +61,38 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 	for (i=0; i<2*LCD_ROW_WORDS; i++)
 		rowBuff[i] = 0;
 
+	// Init double buffer pointers
+	asm("mov %0, %1" : "=r"(bufferPtr[0]) : "r"(buffer[0]));
+	asm("mov %0, %1" : "=r"(bufferPtr[1]) : "r"(buffer[1]));
+
+	// Read the first line of image
+	c_dm <: IMG_RD_LINE;
+	master {
+		c_dm <: imgHandle;
+		c_dm <: 0;
+		c_dm <: bufferPtr[0];
+	}
+	c_dm <: RD_WAIT;
+	c_dm <: bufferPtr[0];
+	c_dm :> unsigned;
+
 
 	//SINGLE PASS ALGORITHM BEGINS
-	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
-
-	for(i=0;i<imgHeight;i++)
+	for(i=1;i<=imgHeight;i++)
 	{
 		// Read image lines from SDRAM through display manager
-		c_dm <: IMG_RD_LINE;
-		master {
-			c_dm <: imgHandle;
-			c_dm <: i;
-			c_dm <: bufferPtr;
+		if (i<imgHeight){
+			c_dm <: IMG_RD_LINE;
+			master {
+				c_dm <: imgHandle;
+				c_dm <: i;
+				c_dm <: bufferPtr[i&1];
+			}
 		}
-		c_dm :> unsigned;
 
 		for(unsigned j=0;j<imgWidth;j++)
 		{
-			rgb565 = (buffer,unsigned short[])[j];
+			rgb565 = (buffer[(i-1)&1],unsigned short[])[j];
 			blue = (rgb565 & 0xF800) >> 8; //Blue component
 			green = (rgb565 & 0x7E0) >> 3; //Green component
 			red = (rgb565 & 0x1F) << 3; //Red component
@@ -167,6 +181,13 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 				// One level resolving is sufficient as labels are processed in ascending order.
 			}
 		}
+
+		if (i<imgHeight){
+			c_dm <: RD_WAIT;
+			c_dm <: bufferPtr[i&1];
+			c_dm :> unsigned;
+		}
+
 	}
 
 

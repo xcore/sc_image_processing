@@ -28,6 +28,10 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 				c_dm :> buffer_ptr;
 			}
 			display_controller_image_read_line_p(c_dc, line, imgHandle, buffer_ptr);
+			break;
+
+		case RD_WAIT:
+			c_dm :> buffer_ptr;
 			display_controller_wait_until_idle_p(c_dc, buffer_ptr);
 			c_dm <: (unsigned)RD_OVER;
 			break;
@@ -40,7 +44,6 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 			}
 			display_controller_image_write_line_p(c_dc, line, imgHandle, buffer_ptr);
 			display_controller_wait_until_idle_p(c_dc, buffer_ptr);
-
 			break;
 
 		case LCD_IMG_WR:

@@ -14,40 +14,60 @@
 
 int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
 {
-	int hist_range,min,max;
-	long long binSum;							// Sum of bin values of normalised histogram
-	long long MG;								// Global Intensity Mean equivalent
-	long long P[256],m1_diff[256],m2[256],m_var[256];	// Class means and Between-class variance
+	unsigned hist_range,min,max;
+	long long binSum;				// Sum of bin values of normalised histogram
+	long long MG;					// Global Intensity Mean equivalent
+	long long P[256],m_var[256];	// Cumulative sum and Between-class variance
+	int m1_diff[256],m2_hist[256];	// Class means and histogram. Variables reused
 	short i,j,k,warn=0;
-	int kStar=0;							// Otsu's threshold
+	int kStar=0;					// Otsu's threshold
 	long long count,maxVar=0;
-	long long Hist[256];
-	unsigned buffer[LCD_ROW_WORDS];
-	intptr_t bufferPtr;
+	unsigned buffer[2][LCD_ROW_WORDS];
+	intptr_t bufferPtr[2];
 
 	// Init Histogram values
-	for (k=0; k<256; k++) Hist[k]=0;
+	for (k=0; k<256; k++) m2_hist[k]=0;
+
+	// Init double buffer pointers
+	asm("mov %0, %1" : "=r"(bufferPtr[0]) : "r"(buffer[0]));
+	asm("mov %0, %1" : "=r"(bufferPtr[1]) : "r"(buffer[1]));
+
+	// Read the first line of image
+	c_dm <: IMG_RD_LINE;
+	master {
+		c_dm <: imgHandle;
+		c_dm <: 0;
+		c_dm <: bufferPtr[0];
+	}
+	c_dm <: RD_WAIT;
+	c_dm <: bufferPtr[0];
+	c_dm :> unsigned;
 
 	// Read image from SDRAM through display manager and find histogram
-	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
+	for (int line=1; line<=imgHeight; line++){
 
-	for (int line=0; line<imgHeight; line++){
-
-		c_dm <: IMG_RD_LINE;
-		master {
-			c_dm <: imgHandle;
-			c_dm <: line;
-			c_dm <: bufferPtr;
+		if (line<imgHeight){
+			c_dm <: IMG_RD_LINE;
+			master {
+				c_dm <: imgHandle;
+				c_dm <: line;
+				c_dm <: bufferPtr[line&1];
+			}
 		}
-		c_dm :> unsigned;
 
 		for (int c=0; c<imgWidth; c++){
-			unsigned short rgb565 = (buffer,unsigned short[])[c];
+			unsigned short rgb565 = (buffer[(line-1)&1],unsigned short[])[c];
 			unsigned char blue = (rgb565 & 0xF800) >> 8; //Blue component
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
 			unsigned char red = (rgb565 & 0x1F) << 3; 	//Red component
 			unsigned char Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
-			Hist[Y]++;
+			m2_hist[Y]++;
+		}
+
+		if (line<imgHeight){
+			c_dm <: RD_WAIT;
+			c_dm <: bufferPtr[line&1];
+			c_dm :> unsigned;
 		}
 
 	}
@@ -56,28 +76,28 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	// Do histogram normalisation to avoid large values. The shape of the histogram is still preserved.
 
 	// Find min & max of histogram values
-	min = max = Hist[0];
+	min = max = m2_hist[0];
 	for(k=1;k<256;k++)
 	{
-		if (Hist[k]<min) min=Hist[k];
-		if (Hist[k]>max) max=Hist[k];
+		if (m2_hist[k]<min) min=m2_hist[k];
+		if (m2_hist[k]>max) max=m2_hist[k];
 	}
 
 
 	// Initial histogram normalised to the range [0,HIST_RANGE].
 
 	for (k=0;k<256;k++)
-		Hist[k] = (Hist[k]-min)*OTSU_THRESHOLD_HIST_RANGE/(max-min);
+		m2_hist[k] = (m2_hist[k]-min)*OTSU_THRESHOLD_HIST_RANGE/(max-min);
 	hist_range = OTSU_THRESHOLD_HIST_RANGE;
 
 
 	// Compute cumulative sum and mean for all k
 
-	P[0]=Hist[0]; m_var[0]=0;
+	P[0]=m2_hist[0]; m_var[0]=0;
 	for (k=1;k<256;k++)
 	{
-		P[k]=P[k-1]+Hist[k];				// Cumulative sum
-		m_var[k]=m_var[k-1]+(k*Hist[k]);	// Cumulative mean
+		P[k]=P[k-1]+m2_hist[k];				// Cumulative sum
+		m_var[k]=m_var[k-1]+(k*m2_hist[k]);	// Cumulative mean
 	}
 
 	binSum = P[255]; // Sum of all bin values of histogram
@@ -87,8 +107,8 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	for (k=0;k<256;k++){
 		if (P[k] && (binSum-P[k])){	// Test for zero denominator
 			m1_diff[k]=m_var[k]/P[k];
-			m2[k]=(MG-m_var[k])/(binSum-P[k]);
-			m1_diff[k]=m1_diff[k]-m2[k];
+			m2_hist[k]=(MG-m_var[k])/(binSum-P[k]);
+			m1_diff[k]=m1_diff[k]-m2_hist[k];
 		}
 	}
 
