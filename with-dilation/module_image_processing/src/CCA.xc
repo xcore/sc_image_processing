@@ -152,10 +152,16 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 
 		for(unsigned j=0;j<imgWidth;j++)
 		{
-			// Check for 1-pixel in the neighborhood
+			// Check for 1-pixel in the current row alone for no dilation
 			Y=0;
-			if ((presentRow,unsigned short[])[j]>binThreshold) Y=1;
+			if (BRIGHT_OBJ_DARK_BG){
+				if ((presentRow,unsigned short[])[j]>binThreshold) Y=255;
+			}
+			else{
+				if ((presentRow,unsigned short[])[j]<=binThreshold) Y=255;
+			}
 
+			// Check for 1-pixel in the neighborhood
 			if (IMAGE_PROCESSING_DILATION){
 				short delta =  (IMAGE_PROCESSING_STRUC_ELMT==5)? 2:1;
 				for (int c=j-delta; c<=j+delta; c++)
