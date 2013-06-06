@@ -43,11 +43,8 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 
 		for (int c=0; c<imgWidth; c++){
 			unsigned short rgb565 = (buffer,unsigned short[])[c];
-			unsigned char blue = (rgb565 & 0xF800) >> 8; //Blue component
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
-			unsigned char red = (rgb565 & 0x1F) << 3; 	//Red component
-			unsigned char Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
-			Hist[Y]++;
+			Hist[green]++;
 		}
 
 	}

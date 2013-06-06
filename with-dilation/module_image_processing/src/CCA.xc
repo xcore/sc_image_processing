@@ -27,20 +27,17 @@ static int min_label(int a,int b,int c,int d)
 }
 
 
-// FUNCTION TO FIND LUMINANCE COMPONENT OF PIXELS OF A ROW
+// FUNCTION TO EXTRACT GREEN COMPONENT OF PIXELS OF A ROW FROM THEIR RGB565
 
-void luminance (unsigned buffer[], unsigned imgWidth)
+void green(unsigned buffer[], unsigned imgWidth)
 {
 	unsigned short rgb565;
-	unsigned char red, green, blue, Y; 	//Pixel components
+	unsigned char green;
 
 	for(unsigned j=0;j<imgWidth;j++){
 		rgb565 = (buffer,unsigned short[])[j];
-		blue = (rgb565 & 0xF800) >> 8; //Blue component
 		green = (rgb565 & 0x7E0) >> 3; //Green component
-		red = (rgb565 & 0x1F) << 3; //Red component
-		Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
-		(buffer,unsigned short[])[j] = Y;
+		(buffer,unsigned short[])[j] = green;
 	}
 }
 
@@ -50,8 +47,6 @@ void luminance (unsigned buffer[], unsigned imgWidth)
 int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold, boundBox_struct boundBox[], int area[], cog_struct cog[])
 {
 	int cnt=0;
-	unsigned short rgb565;
-	unsigned char red, green, blue, Y; 	//Pixel components
 	int A=0,B=0,C=0,D=0; 				//Neighbours of a pixel under consideration
 	int labelNo=1; 						//Counter for label
 	int mergerTable[IMAGE_PROCESSING_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
@@ -120,12 +115,12 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 	c_dm :> unsigned;
 
 
-	// Find luminance of pixels of first 4 rows
+	// Find green component of pixels of first 4 rows
 
-	luminance(prevRow,imgWidth);
-	luminance(presentRow,imgWidth);
-	luminance(nextRow,imgWidth);
-	luminance(nextNextRow,imgWidth);
+	green(prevRow,imgWidth);
+	green(presentRow,imgWidth);
+	green(nextRow,imgWidth);
+	green(nextNextRow,imgWidth);
 
 
 	//SINGLE PASS ALGORITHM BEGINS
@@ -147,18 +142,18 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 		}
 		c_dm :> unsigned;
 
-		luminance(nextNextRow, imgWidth);
+		green(nextNextRow, imgWidth);
 
 
 		for(unsigned j=0;j<imgWidth;j++)
 		{
 			// Check for 1-pixel in the current row alone for no dilation
-			Y=0;
+			unsigned char binVal=0;
 			if (BRIGHT_OBJ_DARK_BG){
-				if ((presentRow,unsigned short[])[j]>binThreshold) Y=255;
+				if ((presentRow,unsigned short[])[j]>binThreshold) binVal=255;
 			}
 			else{
-				if ((presentRow,unsigned short[])[j]<=binThreshold) Y=255;
+				if ((presentRow,unsigned short[])[j]<=binThreshold) binVal=255;
 			}
 
 			// Check for 1-pixel in the neighborhood
@@ -167,27 +162,27 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 				for (int c=j-delta; c<=j+delta; c++)
 					if (c>=0 && c<imgWidth){
 						if (BRIGHT_OBJ_DARK_BG){
-							if ((prevRow,unsigned short[])[c]>binThreshold) Y=255;
-							if ((presentRow,unsigned short[])[c]>binThreshold) Y=255;
-							if ((nextRow,unsigned short[])[c]>binThreshold) Y=255;
+							if ((prevRow,unsigned short[])[c]>binThreshold) binVal=255;
+							if ((presentRow,unsigned short[])[c]>binThreshold) binVal=255;
+							if ((nextRow,unsigned short[])[c]>binThreshold) binVal=255;
 							if (IMAGE_PROCESSING_STRUC_ELMT==5){
-								if ((prevPrevRow,unsigned short[])[c]>binThreshold) Y=255;
-								if ((nextNextRow,unsigned short[])[c]>binThreshold) Y=255;
+								if ((prevPrevRow,unsigned short[])[c]>binThreshold) binVal=255;
+								if ((nextNextRow,unsigned short[])[c]>binThreshold) binVal=255;
 							}
 						}
 						else {
-							if ((prevRow,unsigned short[])[c]<=binThreshold) Y=255;
-							if ((presentRow,unsigned short[])[c]<=binThreshold) Y=255;
-							if ((nextRow,unsigned short[])[c]<=binThreshold) Y=255;
+							if ((prevRow,unsigned short[])[c]<=binThreshold) binVal=255;
+							if ((presentRow,unsigned short[])[c]<=binThreshold) binVal=255;
+							if ((nextRow,unsigned short[])[c]<=binThreshold) binVal=255;
 							if (IMAGE_PROCESSING_STRUC_ELMT==5){
-								if ((prevPrevRow,unsigned short[])[c]<=binThreshold) Y=255;
-								if ((nextNextRow,unsigned short[])[c]<=binThreshold) Y=255;
+								if ((prevPrevRow,unsigned short[])[c]<=binThreshold) binVal=255;
+								if ((nextNextRow,unsigned short[])[c]<=binThreshold) binVal=255;
 							}
 						}
 					}
 			}
 
-			if(Y) //CCA for the current pixel
+			if(binVal) //CCA for the current pixel
 			{
 
 				if(A==0 && B==0 && C==0 && D==0) //Check A,B,C,D are background pixels

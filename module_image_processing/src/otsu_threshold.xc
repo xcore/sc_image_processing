@@ -22,7 +22,7 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	short i,j,k,warn=0;
 	int kStar=0;					// Otsu's threshold
 	long long count,maxVar=0;
-	unsigned buffer[2][LCD_ROW_WORDS];
+	unsigned buffer[2][LCD_ROW_WORDS];	// Double buffer for storing 2 rows of image
 	intptr_t bufferPtr[2];
 
 	// Init Histogram values
@@ -57,11 +57,8 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 
 		for (int c=0; c<imgWidth; c++){
 			unsigned short rgb565 = (buffer[(line-1)&1],unsigned short[])[c];
-			unsigned char blue = (rgb565 & 0xF800) >> 8; //Blue component
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
-			unsigned char red = (rgb565 & 0x1F) << 3; 	//Red component
-			unsigned char Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
-			m2_hist[Y]++;
+			m2_hist[green]++;
 		}
 
 		if (line<imgHeight){

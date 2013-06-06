@@ -194,16 +194,16 @@ void app(chanend c_dispMan[])
 		if ((i-2)>=0) exitTime[i-2] = time2;
 	}
 
-	printstr ("\nImage		Processing time (x 10^(-8) sec)\n");
+	printstr ("\nImage		Processing time (ms)\n");
 	for (int i=0; i<IMAGE_COUNT; i++){
 		printint(i+1);
 		cycles = exitTime[i]-entryTime[i];
-		printstr("\t\t"); printint(cycles);
+		printstr("\t\t"); printint(cycles/100000);
 		printstr("\n");
 	}
 	printstr ("\nMaximum time taken by the pipeline stages: ");
-	printint(maxTime);
-	printstrln (" x 10^(-8) seconds");
+	printint(maxTime/100000);
+	printstrln (" ms");
 	frameRate = TIMER_FREQ/maxTime;
 	printstr ("Frame rate: ");
 	printint (frameRate);

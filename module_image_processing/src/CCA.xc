@@ -34,7 +34,7 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 {
 	int cnt=0;
 	unsigned short rgb565;
-	unsigned char red, green, blue, Y; 	//Pixel components
+	unsigned char green,binVal; 				//Pixel's green component
 	int A=0,B=0,C=0,D=0; 				//Neighbours of a pixel under consideration
 	int labelNo=1; 						//Counter for label
 	int mergerTable[IMAGE_PROCESSING_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
@@ -93,20 +93,17 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 		for(unsigned j=0;j<imgWidth;j++)
 		{
 			rgb565 = (buffer[(i-1)&1],unsigned short[])[j];
-			blue = (rgb565 & 0xF800) >> 8; //Blue component
 			green = (rgb565 & 0x7E0) >> 3; //Green component
-			red = (rgb565 & 0x1F) << 3; //Red component
-			Y = red/3 + green/2 + blue/9;	//Approximate Luminance component
 
 			//Binarisation through thresholding
 			if (BRIGHT_OBJ_DARK_BG){	//Get 1-pixels based on object and background type
-				if (Y>binThreshold) Y = 255; else Y = 0;
+				if (green>binThreshold) binVal = 255; else binVal = 0;
 			}
 			else {
-				if (Y<=binThreshold) Y = 255; else Y = 0;
+				if (green<=binThreshold) binVal = 255; else binVal = 0;
 			}
 
-			if(Y) //Connected component analysis of 1-pixels
+			if(binVal) //Connected component analysis of 1-pixels
 			{
 
 				if(A==0 && B==0 && C==0 && D==0) //Check A,B,C,D are background pixels
