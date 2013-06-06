@@ -15,13 +15,14 @@
 int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
 {
 	unsigned hist_range,min,max;
-	long long binSum;				// Sum of bin values of normalised histogram
-	long long MG;					// Global Intensity Mean equivalent
-	long long P[256],m_var[256];	// Cumulative sum and Between-class variance
-	int m1_diff[256],m2_hist[256];	// Class means and histogram. Variables reused
+	unsigned P[256];		// Cumulative sum
+	unsigned binSum;		// Sum of bin values of normalised histogram
+	unsigned MG;			// Global Intensity Mean equivalent
+	int m_var[256];			// Between-class variance
+	int maxVar=0;
+	int m1_diff[256],m2_hist[256];		// Class means and histogram. Variables reused
 	short i,j,k,warn=0;
-	int kStar=0;					// Otsu's threshold
-	long long count,maxVar=0;
+	unsigned kStar=0, count;			// Otsu's threshold
 	unsigned buffer[2][LCD_ROW_WORDS];	// Double buffer for storing 2 rows of image
 	intptr_t bufferPtr[2];
 
@@ -134,9 +135,9 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 
 		// Update the variables for the next iteration
 
-		for (k=0;k<256;k++) P[k]/=2; // as histogram range halved
+		for (k=0;k<256;k++) P[k] = P[k] >> 1; // as histogram range halved
 		warn=0; kStar=0; count=0; maxVar=0;	// Reset variables for the next loop
-		hist_range/=2;
+		hist_range = hist_range >> 1; binSum = binSum >> 1;
 
 	}
 

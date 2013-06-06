@@ -14,19 +14,20 @@
 
 int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
 {
-	int hist_range,min,max;
-	long long binSum;							// Sum of bin values of normalised histogram
-	long long MG;								// Global Intensity Mean equivalent
-	long long P[256],m1_diff[256],m2[256],m_var[256];	// Class means and Between-class variance
+	unsigned hist_range,min,max;
+	unsigned P[256];		// Cumulative sum
+	unsigned binSum;		// Sum of bin values of normalised histogram
+	unsigned MG;			// Global Intensity Mean equivalent
+	int m_var[256];			// Between-class variance
+	int maxVar=0;
+	int m1_diff[256],m2_hist[256];		// Class means and histogram. Variables reused
 	short i,j,k,warn=0;
-	int kStar=0;							// Otsu's threshold
-	long long count,maxVar=0;
-	long long Hist[256];
+	unsigned kStar=0, count;			// Otsu's threshold
 	unsigned buffer[LCD_ROW_WORDS];
 	intptr_t bufferPtr;
 
 	// Init Histogram values
-	for (k=0; k<256; k++) Hist[k]=0;
+	for (k=0; k<256; k++) m2_hist[k]=0;
 
 	// Read image from SDRAM through display manager and find histogram
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
@@ -44,7 +45,7 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 		for (int c=0; c<imgWidth; c++){
 			unsigned short rgb565 = (buffer,unsigned short[])[c];
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
-			Hist[green]++;
+			m2_hist[green]++;
 		}
 
 	}
@@ -53,28 +54,28 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	// Do histogram normalisation to avoid large values. The shape of the histogram is still preserved.
 
 	// Find min & max of histogram values
-	min = max = Hist[0];
+	min = max = m2_hist[0];
 	for(k=1;k<256;k++)
 	{
-		if (Hist[k]<min) min=Hist[k];
-		if (Hist[k]>max) max=Hist[k];
+		if (m2_hist[k]<min) min=m2_hist[k];
+		if (m2_hist[k]>max) max=m2_hist[k];
 	}
 
 
 	// Initial histogram normalised to the range [0,HIST_RANGE].
 
 	for (k=0;k<256;k++)
-		Hist[k] = (Hist[k]-min)*OTSU_THRESHOLD_HIST_RANGE/(max-min);
+		m2_hist[k] = (m2_hist[k]-min)*OTSU_THRESHOLD_HIST_RANGE/(max-min);
 	hist_range = OTSU_THRESHOLD_HIST_RANGE;
 
 
 	// Compute cumulative sum and mean for all k
 
-	P[0]=Hist[0]; m_var[0]=0;
+	P[0]=m2_hist[0]; m_var[0]=0;
 	for (k=1;k<256;k++)
 	{
-		P[k]=P[k-1]+Hist[k];				// Cumulative sum
-		m_var[k]=m_var[k-1]+(k*Hist[k]);	// Cumulative mean
+		P[k]=P[k-1]+m2_hist[k];				// Cumulative sum
+		m_var[k]=m_var[k-1]+(k*m2_hist[k]);	// Cumulative mean
 	}
 
 	binSum = P[255]; // Sum of all bin values of histogram
@@ -84,8 +85,8 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	for (k=0;k<256;k++){
 		if (P[k] && (binSum-P[k])){	// Test for zero denominator
 			m1_diff[k]=m_var[k]/P[k];
-			m2[k]=(MG-m_var[k])/(binSum-P[k]);
-			m1_diff[k]=m1_diff[k]-m2[k];
+			m2_hist[k]=(MG-m_var[k])/(binSum-P[k]);
+			m1_diff[k]=m1_diff[k]-m2_hist[k];
 		}
 	}
 
@@ -114,9 +115,9 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 
 		// Update the variables for the next iteration
 
-		for (k=0;k<256;k++) P[k]/=2; // as histogram range halved
+		for (k=0;k<256;k++) P[k] = P[k] >> 1; // as histogram range halved
 		warn=0; kStar=0; count=0; maxVar=0;	// Reset variables for the next loop
-		hist_range/=2;
+		hist_range = hist_range >> 1; binSum = binSum >> 1;
 
 	}
 
