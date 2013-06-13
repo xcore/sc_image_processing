@@ -3,7 +3,8 @@
 #include "display_manager_conf.h"
 #include "display_manager.h"
 #include "display_controller.h"
-#include "lcd.h"
+#include "lcd_defines.h"
+// TODO: change to lcd.h if necessary
 
 static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 {
@@ -28,10 +29,6 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 				c_dm :> buffer_ptr;
 			}
 			display_controller_image_read_line_p(c_dc, line, imgHandle, buffer_ptr);
-			break;
-
-		case RD_WAIT:
-			c_dm :> buffer_ptr;
 			display_controller_wait_until_idle_p(c_dc, buffer_ptr);
 			c_dm <: (unsigned)RD_OVER;
 			break;

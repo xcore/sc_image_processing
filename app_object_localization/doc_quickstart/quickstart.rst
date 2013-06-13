@@ -63,9 +63,10 @@ Now that the application has been compiled, the next step is to run it on the Sl
    #. Click on the ``Run`` icon (the white arrow in the green circle). 
    #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
    #. Wait until the images have loaded over the XTAG connector from the host.
-   #. There should be a series of 5 images to be processed for object localization.
+   #. There should be a series of four images to be processed for object localization.
    #. Once the first processed image is displayed, a message is displayed on the console to prompt the user to touch the LCD screen for displaying the remaining processed images one after another.
    #. The objects in the images are shown by green boxes.
+   #. The next image is the binary image of the first image after morphological closing. The subsequent images displayed are the processed images of remaining three images.
 
 
 Next Steps
@@ -75,5 +76,6 @@ Next Steps
  #. The color of bounding boxes on objects can be changed from green by redefining ``BOX_COLOR``. 
  #. ``SIZE_THRESHOLD`` controls the size in pixels of spurious objects to be ignored. 
  #. If the image contains dark objects on a bright background, the define ``BRIGHT_OBJ_DARK_BG`` in ``CCA_conf.h`` should be assigned the value 0. 
+ #. Assign 0 to NUM_DILATE and NUM_ERODE to check the binary image resulting from binarisation and before applying morphological closing.
 
     

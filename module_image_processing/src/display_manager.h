@@ -5,7 +5,6 @@
 enum disp_mngr_cmd{
 	REG_IMG,
 	IMG_RD_LINE,
-	RD_WAIT,
 	RD_OVER,
 	IMG_WR_LINE,
 	LCD_IMG_WR,

@@ -30,18 +30,18 @@ static int min_label(int a,int b,int c,int d)
 // SINGLE PASS CONNECTED COMPONENT ANALYSIS
 // Ref: D.G.Bailey and C.T.Johnston, "Single pass connected component analysis", Image and Vision Computing Conference, Dec 2007.
 
-int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold, boundBox_struct boundBox[], int area[], cog_struct cog[])
+int image_processing_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[])
 {
 	int cnt=0;
 	unsigned short rgb565;
-	unsigned char green,binVal; 				//Pixel's green component
+	unsigned char green,binVal; 		//Pixel's green component
 	int A=0,B=0,C=0,D=0; 				//Neighbours of a pixel under consideration
 	int labelNo=1; 						//Counter for label
 	int mergerTable[IMAGE_PROCESSING_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
 	int rowBuff[2*LCD_ROW_WORDS]; 		//Row buffer for storing one row of image
 	unsigned i,j,e,e1;
-	unsigned buffer[2][LCD_ROW_WORDS];	// Double buffer for storing two rows
-	intptr_t bufferPtr[2];
+	unsigned buffer[LCD_ROW_WORDS];	// Buffer for storing image row
+	intptr_t bufferPtr;
 
 
 	//INITIALISATION
@@ -61,49 +61,25 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 	for (i=0; i<2*LCD_ROW_WORDS; i++)
 		rowBuff[i] = 0;
 
-	// Init double buffer pointers
-	asm("mov %0, %1" : "=r"(bufferPtr[0]) : "r"(buffer[0]));
-	asm("mov %0, %1" : "=r"(bufferPtr[1]) : "r"(buffer[1]));
-
-	// Read the first line of image
-	c_dm <: IMG_RD_LINE;
-	master {
-		c_dm <: imgHandle;
-		c_dm <: 0;
-		c_dm <: bufferPtr[0];
-	}
-	c_dm <: RD_WAIT;
-	c_dm <: bufferPtr[0];
-	c_dm :> unsigned;
-
+	// Init buffer pointer
+	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
 	//SINGLE PASS ALGORITHM BEGINS
-	for(i=1;i<=imgHeight;i++)
+	for(i=0;i<imgHeight;i++)
 	{
 		// Read image lines from SDRAM through display manager
-		if (i<imgHeight){
-			c_dm <: IMG_RD_LINE;
-			master {
-				c_dm <: imgHandle;
-				c_dm <: i;
-				c_dm <: bufferPtr[i&1];
-			}
+		c_dm <: IMG_RD_LINE;
+		master {
+			c_dm <: binImgHandle;
+			c_dm <: i;
+			c_dm <: bufferPtr;
 		}
+		c_dm :> unsigned;
 
 		for(unsigned j=0;j<imgWidth;j++)
 		{
-			rgb565 = (buffer[(i-1)&1],unsigned short[])[j];
-			green = (rgb565 & 0x7E0) >> 3; //Green component
 
-			//Binarisation through thresholding
-			if (BRIGHT_OBJ_DARK_BG){	//Get 1-pixels based on object and background type
-				if (green>binThreshold) binVal = 255; else binVal = 0;
-			}
-			else {
-				if (green<=binThreshold) binVal = 255; else binVal = 0;
-			}
-
-			if(binVal) //Connected component analysis of 1-pixels
+			if((buffer,unsigned short[])[j]) //Connected component analysis of 1-pixels
 			{
 
 				if(A==0 && B==0 && C==0 && D==0) //Check A,B,C,D are background pixels
@@ -177,12 +153,6 @@ int image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, u
 				mergerTable[e]=mergerTable[e1]; // Point e to its lowest equivalent label.
 				// One level resolving is sufficient as labels are processed in ascending order.
 			}
-		}
-
-		if (i<imgHeight){
-			c_dm <: RD_WAIT;
-			c_dm <: bufferPtr[i&1];
-			c_dm :> unsigned;
 		}
 
 	}

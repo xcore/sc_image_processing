@@ -10,6 +10,8 @@
 #include "touch_controller_lib.h"
 #include "touch_controller_impl.h"
 #include "otsu_threshold.h"
+#include "binarisation.h"
+#include "morph_closing5x5.h"
 #include "CCA.h"
 
 #include "app_conf.h"
@@ -28,7 +30,7 @@ on tile[0] : touch_controller_ports touchports = {
 
 
 // Load images from PC to SDRAM
-static void load_image(chanend c_dm, streaming chanend c_load, unsigned image[], unsigned short imgHt[], unsigned short imgWd[])
+static void load_image(chanend c_dm, streaming chanend c_load, unsigned image[], unsigned binImage[], unsigned short imgHt[], unsigned short imgWd[])
 {
 	unsigned buffer[LCD_ROW_WORDS];
 	intptr_t bufferPtr;
@@ -59,10 +61,24 @@ static void load_image(chanend c_dm, streaming chanend c_load, unsigned image[],
 		    c_dm <: bufferPtr;	// for buffer ptr
 		}
 
-			for (unsigned c=0; c<LCD_ROW_WORDS; c++)
-				buffer[c] = 0;
-			for (unsigned line=imgHt[i]; line<LCD_HEIGHT; line++)
-				c_dm <: bufferPtr;
+		for (unsigned c=0; c<LCD_ROW_WORDS; c++)
+			buffer[c] = 0;
+		for (unsigned line=imgHt[i]; line<LCD_HEIGHT; line++)
+			c_dm <: bufferPtr;
+
+		// Allocate space for binary image in SDRAM and init
+		c_dm <: REG_IMG;
+		master{
+			c_dm <: (unsigned)LCD_ROW_WORDS;
+			c_dm <: (unsigned)LCD_HEIGHT;
+		}
+		c_dm :> binImage[i];
+
+		c_dm <: LCD_IMG_WR;
+		c_dm <: binImage[i];
+
+		for (unsigned line = 0; line < LCD_HEIGHT; line++)
+			c_dm <: bufferPtr;
 
 	}
 }
@@ -86,8 +102,6 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 				c_dm <: boundBox[cc].xMin;
 				c_dm <: bufferPtr;
 			}
-			c_dm <: RD_WAIT;
-			c_dm <: bufferPtr;
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)
@@ -107,8 +121,6 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 					c_dm <: line;
 					c_dm <: bufferPtr;
 				}
-				c_dm <: RD_WAIT;
-				c_dm <: bufferPtr;
 				c_dm :> unsigned;
 
 				c = boundBox[cc].yMin;
@@ -130,8 +142,6 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 				c_dm <: boundBox[cc].xMax;
 				c_dm <: bufferPtr;
 			}
-			c_dm <: RD_WAIT;
-			c_dm <: bufferPtr;
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)
@@ -148,11 +158,11 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 
 }
 
-
+#define	N_STAGES 4
 void app(chanend c_dispMan[])
 {
 	streaming chan c_loader;
-	unsigned image[IMAGE_COUNT], image_no=0;
+	unsigned image[IMAGE_COUNT], binImage[IMAGE_COUNT], image_no=0;
 	unsigned short imgHeight[IMAGE_COUNT], imgWidth[IMAGE_COUNT];
 	int area[IMAGE_PROCESSING_CCA_MAX_LABEL+1], area_old[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
 	boundBox_struct boundBox[IMAGE_PROCESSING_CCA_MAX_LABEL+1], boundBox_old[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
@@ -165,39 +175,47 @@ void app(chanend c_dispMan[])
 	// Load images to SDRAM
 	printstrln("Loading images. Please wait ........");
 	par{
-		load_image(c_dispMan[0], c_loader, image, imgHeight, imgWidth);
+		load_image(c_dispMan[0], c_loader, image, binImage, imgHeight, imgWidth);
 		loader(c_loader);
 	  }
 
+
 	// Connected component analysis in pipeline
-	for (int i=0; i<IMAGE_COUNT+2; i++){
+	for (int i=0; i<IMAGE_COUNT+(N_STAGES-1); i++){
 
 		t :> time1;
 		if (i<IMAGE_COUNT) entryTime[i] = time1;
 
 		par{
-			if (i<IMAGE_COUNT)
+			if (i<IMAGE_COUNT){
 				threshold = image_processing_otsu_threshold(c_dispMan[1], image[i], imgHeight[i], imgWidth[i]);
+				image_processing_binarisation(c_dispMan[1], image[i], binImage[i], imgHeight[i], imgWidth[i], threshold);
+			}
 			if ((i-1)>=0 && (i-1)<IMAGE_COUNT)
-				nCC = image_processing_CCA(c_dispMan[2], image[i-1], imgHeight[i-1], imgWidth[i-1], threshold_old, boundBox, area, cog);
-			if ((i-2)>=0)
-				annotate_image(c_dispMan[3], image[i-2],imgHeight[i-2], imgWidth[i-2], nCC_old, boundBox_old, area_old);
+				image_processing_morphological_closing5x5(c_dispMan[2], binImage[i-1], imgHeight[i-1], imgWidth[i-1]);
+
+			if ((i-2)>=0 && (i-2)<IMAGE_COUNT)
+				nCC = image_processing_CCA(c_dispMan[3], binImage[i-2], imgHeight[i-2], imgWidth[i-2], boundBox, area, cog);
+
+			if ((i-3)>=0 && (i-3)<IMAGE_COUNT)
+				annotate_image(c_dispMan[4], image[i-3], imgHeight[i-3], imgWidth[i-3], nCC_old, boundBox_old, area_old);
 		}
+
 
 		threshold_old = threshold;
 		nCC_old = nCC;
 
-		for (int i=1; i<=nCC; i++){
-			boundBox_old[i].xMin = boundBox[i].xMin;
-			boundBox_old[i].yMin = boundBox[i].yMin;
-			boundBox_old[i].xMax = boundBox[i].xMax;
-			boundBox_old[i].yMax = boundBox[i].yMax;
-			area_old[i] = area[i];
+		for (int j=1; j<=nCC; j++){
+			boundBox_old[j].xMin = boundBox[j].xMin;
+			boundBox_old[j].yMin = boundBox[j].yMin;
+			boundBox_old[j].xMax = boundBox[j].xMax;
+			boundBox_old[j].yMax = boundBox[j].yMax;
+			area_old[j] = area[j];
 		}
 
 		t :> time2;
 		if ((time2-time1)>maxTime) maxTime = time2-time1;
-		if ((i-2)>=0) exitTime[i-2] = time2;
+		if ((i-(N_STAGES-1))>=0) exitTime[i-(N_STAGES-1)] = time2;
 
 	}
 
@@ -224,11 +242,16 @@ void app(chanend c_dispMan[])
 	printstrln("\n****** Please touch the LCD screen   ******");
 	printstrln("****** to display processed images   ******");
 
+
 	while(1){
 		unsigned x=0,y=0;
 	    touch_lib_req_next_coord(touchports,x,y);
+	    c_dispMan[0] <: FB_COMMIT;
+	    c_dispMan[0] <: binImage[image_no];
+
 	    image_no = (image_no+1)%IMAGE_COUNT;
 
+	    touch_lib_req_next_coord(touchports,x,y);
 	    c_dispMan[0] <: FB_COMMIT;
 	    c_dispMan[0] <: image[image_no];
 	}
@@ -242,7 +265,7 @@ void main(){
 
 	par{
 		on tile[0]: app(c_dm);
-		on tile[0]: display_manager(c_dm, c_dc);
+		on tile[1]: display_manager(c_dm, c_dc);
 		on tile[0]: display_controller(c_dc,c_lcd,c_sdram);
 		on tile[0]: lcd_server(c_lcd,lcdports);
 		on tile[0]: sdram_server(c_sdram,sdramports);

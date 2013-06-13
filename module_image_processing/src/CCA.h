@@ -14,6 +14,6 @@ typedef struct{
 	int y;
 } cog_struct;
 
-int  image_processing_CCA(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold, boundBox_struct boundBox[], int area[], cog_struct cog[]);
+int  image_processing_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[]);
 
 #endif /* CCA_H_ */

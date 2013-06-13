@@ -23,49 +23,30 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	int m1_diff[256],m2_hist[256];		// Class means and histogram. Variables reused
 	short i,j,k,warn=0;
 	unsigned kStar=0, count;			// Otsu's threshold
-	unsigned buffer[2][LCD_ROW_WORDS];	// Double buffer for storing 2 rows of image
-	intptr_t bufferPtr[2];
+	unsigned buffer[LCD_ROW_WORDS];		// Buffer for storing an image row
+	intptr_t bufferPtr;
 
 	// Init Histogram values
 	for (k=0; k<256; k++) m2_hist[k]=0;
 
-	// Init double buffer pointers
-	asm("mov %0, %1" : "=r"(bufferPtr[0]) : "r"(buffer[0]));
-	asm("mov %0, %1" : "=r"(bufferPtr[1]) : "r"(buffer[1]));
-
-	// Read the first line of image
-	c_dm <: IMG_RD_LINE;
-	master {
-		c_dm <: imgHandle;
-		c_dm <: 0;
-		c_dm <: bufferPtr[0];
-	}
-	c_dm <: RD_WAIT;
-	c_dm <: bufferPtr[0];
-	c_dm :> unsigned;
+	// Init buffer pointer
+	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
 	// Read image from SDRAM through display manager and find histogram
-	for (int line=1; line<=imgHeight; line++){
+	for (int line=0; line<imgHeight; line++){
 
-		if (line<imgHeight){
-			c_dm <: IMG_RD_LINE;
-			master {
-				c_dm <: imgHandle;
-				c_dm <: line;
-				c_dm <: bufferPtr[line&1];
-			}
+		c_dm <: IMG_RD_LINE;
+		master {
+			c_dm <: imgHandle;
+			c_dm <: line;
+			c_dm <: bufferPtr;
 		}
+		c_dm :> unsigned;
 
 		for (int c=0; c<imgWidth; c++){
-			unsigned short rgb565 = (buffer[(line-1)&1],unsigned short[])[c];
+			unsigned short rgb565 = (buffer,unsigned short[])[c];
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
 			m2_hist[green]++;
-		}
-
-		if (line<imgHeight){
-			c_dm <: RD_WAIT;
-			c_dm <: bufferPtr[line&1];
-			c_dm :> unsigned;
 		}
 
 	}
@@ -104,8 +85,8 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 	// Find class means m1 and m2
 	for (k=0;k<256;k++){
 		if (P[k] && (binSum-P[k])){	// Test for zero denominator
-			m1_diff[k]=m_var[k]/P[k];
-			m2_hist[k]=(MG-m_var[k])/(binSum-P[k]);
+			m1_diff[k] = m_var[k]/P[k];
+			m2_hist[k] = (MG-m_var[k])/(binSum-P[k]);
 			m1_diff[k]=m1_diff[k]-m2_hist[k];
 		}
 	}
@@ -147,7 +128,7 @@ int image_processing_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned i
 		assert(0);
 	}
 
-	kStar/=count;
+	kStar /= count;
 	return (kStar);
 
 }
