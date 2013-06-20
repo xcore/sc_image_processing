@@ -1,77 +1,82 @@
-/***************************************************
- * Morphological Dilation operation
- ***************************************************/
+/**************************************************************
+ * Morphological dilation operation with mxm structuring element
+ **************************************************************/
 
 #include <stdint.h>
+#include <print.h>
 
-#include "morph_dilation_conf.h"
+#include "morph_conf.h"
 #include "lcd_defines.h"
 #include "display_manager.h"
 
+
 void image_processing_morphological_dilation(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth)
 {
-	unsigned prevRow[LCD_ROW_WORDS], nextRow[LCD_ROW_WORDS], presentRow[LCD_ROW_WORDS], buffer[LCD_ROW_WORDS];	//Buffers to store 3 rows for dilation and erosion
-	intptr_t presentRowPtr, nextRowPtr, bufferPtr;
+	unsigned rowBuffer[STRUC_ELMNT_SIZE][LCD_ROW_WORDS], buffer[LCD_ROW_WORDS];
+	intptr_t rowBufferPtr[STRUC_ELMNT_SIZE], bufferPtr;
+	unsigned short index, halfStrucElmnt;
+
 
 	// Initialize buffer pointers
-	asm("mov %0, %1" : "=r"(presentRowPtr) : "r"(presentRow));
-	asm("mov %0, %1" : "=r"(nextRowPtr) : "r"(nextRow));
+	for (int i=1; i<STRUC_ELMNT_SIZE; i++)
+		asm("mov %0, %1" : "=r"(rowBufferPtr[i]) : "r"(rowBuffer[i]));
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
+	for (int c=0; c<halfStrucElmnt; c++)
+		(buffer,unsigned short[])[c] = 0;
+	for (int c=imgWidth-halfStrucElmnt; c<imgWidth; c++)
+		(buffer,unsigned short[])[c] = 0;
+	for (int c=imgWidth; c<(LCD_ROW_WORDS<<1); c++)	//Remaining columns of LCD when image size is less
+		(buffer,unsigned short[])[c] = 0;
+
+	halfStrucElmnt = STRUC_ELMNT_SIZE>>1;
+	index = STRUC_ELMNT_SIZE-1;
+
 
 	// Iterative dilation
 	for (int i=0; i<NUM_DILATE; i++){
 
-		// Read first 2 rows
-		c_dm <: IMG_RD_LINE;
-		master {
-			c_dm <: binImgHandle;
-			c_dm <: 0;
-			c_dm <: presentRowPtr;
+		// Read first 4 rows
+		for (int j=1; j<STRUC_ELMNT_SIZE; j++){
+			c_dm <: IMG_RD_LINE;
+			master {
+				c_dm <: binImgHandle;
+				c_dm <: j-1;
+				c_dm <: rowBufferPtr[j];
+			}
+			c_dm :> unsigned;
 		}
-		c_dm :> unsigned;
-
-		c_dm <: IMG_RD_LINE;
-		master {
-			c_dm <: binImgHandle;
-			c_dm <: 1;
-			c_dm <: nextRowPtr;
-		}
-		c_dm :> unsigned;
-
 
 		// Read remaining rows for dilation
-		for (int r=1; r<imgHeight-1; r++){
+		for (int r=halfStrucElmnt; r<imgHeight-halfStrucElmnt; r++){
 
-			for (unsigned c=0; c<LCD_ROW_WORDS; c++){
-					prevRow[c] = presentRow[c];
-					presentRow[c] = nextRow[c];
-			}
+			// Moving the rows
+			for (int c=0; c<LCD_ROW_WORDS; c++)
+				for (int j=1; j<STRUC_ELMNT_SIZE; j++)
+					rowBuffer[j-1][c] = rowBuffer[j][c];
 
 			c_dm <: IMG_RD_LINE;
 			master {
 				c_dm <: binImgHandle;
-				c_dm <: r+1;
-				c_dm <: nextRowPtr;
+				c_dm <: r+halfStrucElmnt;
+				c_dm <: rowBufferPtr[index];
 			}
 			c_dm :> unsigned;
 
-			(buffer,unsigned short[])[0] = (presentRow,unsigned short[])[0];
-			(buffer,unsigned short[])[imgWidth-1] = (presentRow,unsigned short[])[imgWidth-1];
 
 			// check for 1-pixel in the neighbourhood
-			for (int c=1; c<imgWidth-1; c++){
-				(buffer,unsigned short[])[c] = ((prevRow,unsigned short[])[c-1]) |
-						((prevRow,unsigned short[])[c]) |
-						((prevRow,unsigned short[])[c+1]) |
-						((presentRow,unsigned short[])[c-1]) |
-						((presentRow,unsigned short[])[c]) |
-						((presentRow,unsigned short[])[c+1]) |
-						((nextRow,unsigned short[])[c-1]) |
-						((nextRow,unsigned short[])[c]) |
-						((nextRow,unsigned short[])[c+1]);
-			}
-			for (int c=imgWidth; c<2*LCD_ROW_WORDS; c++)
+			// First compute the OR of vertical neighbours
+			for (int c=halfStrucElmnt; c<imgWidth-halfStrucElmnt; c++)
+				for (int j=1; j<STRUC_ELMNT_SIZE; j++) // Use oldest row for storing vertical OR
+					(rowBuffer[0],unsigned short[])[c] |= (rowBuffer[j],unsigned short[])[c];
+
+
+			// Then compute the OR of horizontal neighbours
+			for (int c=halfStrucElmnt; c<imgWidth-halfStrucElmnt; c++){
 				(buffer,unsigned short[])[c] = 0;
+				for (int j=c-halfStrucElmnt; j<=c+halfStrucElmnt; j++)
+					(buffer,unsigned short[])[c] |= (rowBuffer[0],unsigned short[])[j];
+			}
+
 
 			// write the dilated row
 			c_dm <: IMG_WR_LINE;
@@ -84,6 +89,7 @@ void image_processing_morphological_dilation(chanend c_dm, unsigned binImgHandle
 		}
 
 	}
+
 
 
 }

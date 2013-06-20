@@ -11,7 +11,7 @@
 #include "touch_controller_impl.h"
 #include "otsu_threshold.h"
 #include "binarisation.h"
-#include "morph_closing5x5.h"
+#include "morph_closing.h"
 #include "CCA.h"
 
 #include "app_conf.h"
@@ -167,7 +167,7 @@ void app(chanend c_dispMan[])
 	int area[IMAGE_PROCESSING_CCA_MAX_LABEL+1], area_old[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
 	boundBox_struct boundBox[IMAGE_PROCESSING_CCA_MAX_LABEL+1], boundBox_old[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
 	cog_struct cog[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
-	int threshold=0, threshold_old=0, nCC=0, nCC_old=0;
+	int threshold=0, nCC=0, nCC_old=0;
 	timer t;
 	unsigned time1, time2, maxTime=0;
 	unsigned entryTime[IMAGE_COUNT], exitTime[IMAGE_COUNT], cycles, frameRate;
@@ -192,7 +192,7 @@ void app(chanend c_dispMan[])
 				image_processing_binarisation(c_dispMan[1], image[i], binImage[i], imgHeight[i], imgWidth[i], threshold);
 			}
 			if ((i-1)>=0 && (i-1)<IMAGE_COUNT)
-				image_processing_morphological_closing5x5(c_dispMan[2], binImage[i-1], imgHeight[i-1], imgWidth[i-1]);
+				image_processing_morphological_closing(c_dispMan[2], binImage[i-1], imgHeight[i-1], imgWidth[i-1]);
 
 			if ((i-2)>=0 && (i-2)<IMAGE_COUNT)
 				nCC = image_processing_CCA(c_dispMan[3], binImage[i-2], imgHeight[i-2], imgWidth[i-2], boundBox, area, cog);
@@ -202,9 +202,7 @@ void app(chanend c_dispMan[])
 		}
 
 
-		threshold_old = threshold;
 		nCC_old = nCC;
-
 		for (int j=1; j<=nCC; j++){
 			boundBox_old[j].xMin = boundBox[j].xMin;
 			boundBox_old[j].yMin = boundBox[j].yMin;

@@ -18,7 +18,7 @@ In this demonstration we use the following hardware and software:
   * module_touch_controller_lib,
   * module_slicekit_support,
 
-together to locate objects on colour or gray images and create an interactive display of processed images on LCD. This application showcases some of the image processing techniques such as Otsu's thresholding and connected component analysis, and how to use the touch screen for interactive display. 
+together to locate objects on colour or gray images and create an interactive display of processed images on LCD. This application showcases some of the image processing techniques such as Otsu's thresholding, morphological operations and connected component analysis, and how to use the touch screen for interactive display. 
 
 Hardware Setup
 ++++++++++++++
@@ -63,19 +63,19 @@ Now that the application has been compiled, the next step is to run it on the Sl
    #. Click on the ``Run`` icon (the white arrow in the green circle). 
    #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
    #. Wait until the images have loaded over the XTAG connector from the host.
-   #. There should be a series of four images to be processed for object localization.
+   #. There should be a series of five images to be processed for object localization.
    #. Once the first processed image is displayed, a message is displayed on the console to prompt the user to touch the LCD screen for displaying the remaining processed images one after another.
    #. The objects in the images are shown by green boxes.
-   #. The next image is the binary image of the first image after morphological closing. The subsequent images displayed are the processed images of remaining three images.
+   #. The next image is the binary image of the first image after morphological closing. The subsequent images displayed are the processed images of remaining four images.
 
 
 Next Steps
 ++++++++++
 
- #. Try changing the files that are loaded from the host. To do this, generate an image (should have bright objects on a dark background), save it in ``tga`` format uncompressed. Save the file(s) into ``images`` folder of ``app_object_localization`` directory within your workspace. Now, change the ``IMAGE_COUNT`` and add the name of your new image to the array ``images`` defined in ``app_conf.h``. Ensure the filename is less than 30 characters long.
+ #. Try changing the files that are loaded from the host. To do this, generate an image (should have bright objects on a dark background and vice versa), save it in ``tga`` format uncompressed. Save the file(s) into ``images`` folder of ``app_object_localization`` directory within your workspace. Now, change the ``IMAGE_COUNT`` and add the name of your new image to the array ``images`` defined in ``app_conf.h``. Ensure the filename is less than 30 characters long.
+ #. If the images contains dark objects on a bright background, the define ``BRIGHT_OBJ_DARK_BG`` in ``binarisation_conf.h`` should be assigned the value 0. 
  #. The color of bounding boxes on objects can be changed from green by redefining ``BOX_COLOR``. 
- #. ``SIZE_THRESHOLD`` controls the size in pixels of spurious objects to be ignored. 
- #. If the image contains dark objects on a bright background, the define ``BRIGHT_OBJ_DARK_BG`` in ``CCA_conf.h`` should be assigned the value 0. 
- #. Assign 0 to NUM_DILATE and NUM_ERODE to check the binary image resulting from binarisation and before applying morphological closing.
+ #. ``SIZE_THRESHOLD`` in ``app_conf.h`` controls the size in pixels of spurious objects to be ignored. 
+ #. Assign 0 to NUM_DILATE and NUM_ERODE in ``morph_conf.h`` to check the binary image resulting from binarisation and before applying morphological closing.
 
     
