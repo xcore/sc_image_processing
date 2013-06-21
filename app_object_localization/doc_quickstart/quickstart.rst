@@ -3,22 +3,16 @@
 Object Localization Demo Quickstart Guide
 =========================================
 
-sw_image_processing demo : Quick Start Guide
---------------------------------------------
 
-In this demonstration we use the following hardware and software:
+This demonstration uses the sliceKIT hardware and software listed below together to locate objects (blobs) on still colour or gray images and create an interactive display of processed images on the LCD. It demonstrates a pipeline of typical processing steps common in machine vision and some computer vision applications including "Otsu's" thresholding method, morphological operations and connected component analysis. The results are dislayed interactively on the LCD.
 
-  * XA-SK-SCR480 Slice Card,
-  * XA-SK-SDRAM Slice Card,
-  * module_image_processing,
-  * module_sdram,
-  * module_lcd,
-  * module_display_controller,
-  * module_i2c_master,
-  * module_touch_controller_lib,
-  * module_slicekit_support,
+  * XA-SK-SCR480 Slice Card
+  * XA-SK-SDRAM Slice Card
+  * Machine Vision Pipeline Components
+  * SDRAM Memory Controller
+  * Parallel RGB LCD Driver
+  * Touch Screen Driver Function Library
 
-together to locate objects on colour or gray images and create an interactive display of processed images on LCD. This application showcases some of the image processing techniques such as Otsu's thresholding, morphological operations and connected component analysis, and how to use the touch screen for interactive display. 
 
 Hardware Setup
 ++++++++++++++
@@ -39,7 +33,7 @@ To setup up the system:
    :width: 400px
    :align: center
 
-   Hardware Setup for Display Controller Demo
+   Hardware Setup for Object Localisation Demo
    
 	
 Import and Build the Application
@@ -62,11 +56,11 @@ Now that the application has been compiled, the next step is to run it on the Sl
    #. Select the file ``app_object_localization.xc`` in the ``app_object_localization`` project from the Project Explorer.
    #. Click on the ``Run`` icon (the white arrow in the green circle). 
    #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
-   #. Wait until the images have loaded over the XTAG connector from the host.
-   #. There should be a series of five images to be processed for object localization.
+   #. Wait until the images have loaded over the XTAG connector from the host. This may take 30 seconds or so, since they are being loaded over the serial JTAG connection via the XTAG2. There is a series of five images to be processed for object localization.
    #. Once the first processed image is displayed, a message is displayed on the console to prompt the user to touch the LCD screen for displaying the remaining processed images one after another.
    #. The objects in the images are shown by green boxes.
    #. The next image is the binary image of the first image after morphological closing. The subsequent images displayed are the processed images of remaining four images.
+   #. Finally note that this application calculates the time taken to process each of the images, and then calculates the resulting effectiev frame rate.
 
 
 Next Steps
