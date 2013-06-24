@@ -242,14 +242,18 @@ void app(chanend c_dispMan[])
 
 
 	while(1){
-		unsigned x=0,y=0;
+		unsigned x=0, y=0, time;
 	    touch_lib_req_next_coord(touchports,x,y);
+	    t :> time;
+	    t when timerafter(time+TIMER_FREQ/2) :> void;	//introduce delay
 	    c_dispMan[0] <: FB_COMMIT;
 	    c_dispMan[0] <: binImage[image_no];
 
 	    image_no = (image_no+1)%IMAGE_COUNT;
 
 	    touch_lib_req_next_coord(touchports,x,y);
+	    t :> time;
+	    t when timerafter(time+TIMER_FREQ/2) :> void;	//introduce delay
 	    c_dispMan[0] <: FB_COMMIT;
 	    c_dispMan[0] <: image[image_no];
 	}
