@@ -60,7 +60,14 @@ Now that the application has been compiled, the next step is to run it on the Sl
    #. Once the first processed image is displayed, a message is displayed on the console to prompt the user to touch the LCD screen for displaying the remaining processed images one after another.
    #. The objects in the images are shown by green boxes.
    #. The next image is the binary image of the first image after morphological closing. The subsequent images displayed are the processed images of remaining four images.
-   #. Finally note that this application calculates the time taken to process each of the images, and then calculates the resulting effectiev frame rate.
+   #. Finally note that this application processes the images in pipeline with four stages running in parallel. The demo calculates the time taken to process each of the images, and then calculates the resulting effective frame rate.
+
+.. figure:: images/blk_diag.jpg
+   :width: 400px
+   :align: center
+
+   Pipelined Processing of Images
+
 
 
 Next Steps
