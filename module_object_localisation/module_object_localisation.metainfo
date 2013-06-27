@@ -1,0 +1,156 @@
+-------------------------------------------------------------------------------
+-- Descriptive metadata
+-------------------------------------------------------------------------------
+
+componentName = "Object Localisation"
+componentFullName = ""
+alternativeNames = { }
+componentDescription = "Offers an object localisation component"
+componentVersion = "1v0"
+
+-------------------------------------------------------------------------------
+-- Parameter descriptions.
+-------------------------------------------------------------------------------
+
+configPoints =
+{
+  
+
+  bright_obj_dark_bg =
+  {
+    short   = "Image type",
+    long    = "Image containing bright objects on a dark background",
+    help    = "This selects the type of image to be binarised.",
+    units   = "",
+    define  = "BRIGHT_OBJ_DARK_BG",
+    type    = "int",
+    options = {0,1},
+    resourceUsageFlags = {},
+    default = 1
+  },
+
+  num_dilate =
+  {
+    short   = "Dilation iterations",
+    long    = "",
+    help    = "This gives the number of times dilation should be performed for morphological closing",
+    units   = "",
+    define  = "OBJECT_LOCALISATION_NUM_DILATE",
+    type    = "int",
+    min     = 0,
+    resourceUsageFlags = {"noeffect"},
+    default=1
+  },
+
+  num_erode =
+  {
+    short   = "Erosion iterations",
+    long    = "",
+    help    = "This gives the number of times erosion should be performed for morphological closing",
+    units   = "",
+    define  = "OBJECT_LOCALISATION_NUM_ERODE",
+    type    = "int",
+    min     = 0,
+    resourceUsageFlags = {"noeffect"},
+    default = 1
+  },
+
+  struc_elmnt_size =
+  {
+    short   = "Structuring element size",
+    long    = "",
+    help    = "This defines the size of structuring element for morphological operations. For mxm, it is m. m should be odd",
+    units   = "pixels",
+    define  = "OBJECT_LOCALISATION_STRUC_ELMNT_SIZE",
+    min     = 3,
+    type    = "int",
+    resourceUsageFlags = {"noeffect"},
+    default = 5
+  },
+
+  CCA_max_label =
+  {
+    short   = "CCA maximum label",
+    long    = "",
+    help    = "This gives the maximum number of labels allowed for connected component analysis",
+    units   = "",
+    define  = "OBJECT_LOCALISATION_CCA_MAX_LABEL",  
+    type    = "int",
+    resourceUsageFlags = {"noeffect"},
+    default = 200
+  },
+
+  channels =
+  {
+    short   = "Display manager input channels",
+    long    = "",
+    help    = "This gives the number of input channels for display manager",
+    units   = "",
+    define  = "OBJECT_LOCALISATION_CHANNELS",  
+    min     = 1,
+    max     = 5,
+    type    = "int",
+    resourceUsageFlags = {"noeffect"},
+    default = 5
+  },
+}
+
+derivedValues = {}
+
+ports = {}
+
+channels = {
+	c_dm = {
+		short = "Display manager channel",
+		long = "Channel that connects a client to display manager",
+		help = "",
+	},
+
+	c_dc = {
+		short = "Display controller channel",
+		long = "Channel for the display manager to send commands to display controller",
+		help = "",
+	},
+}
+
+function getConfigStatus()
+  local status = "Trusted Configuration"
+  local issues = {}
+  return status, issues
+end
+            
+-------------------------------------------------------------------------------
+-- Source generation functions
+-------------------------------------------------------------------------------
+
+
+generatedCode = {
+  includes = {"binarisation.h","CCA.h","morph_closing.h","Otsu_threshold.h","display_manager.h"},
+
+  globals = [[  ]],
+
+  body = [[
+	object_localisation_otsu_threshold(${swblock.chanends.c_dm);
+	object_localisation_binarisation(${swblock.chanends.c_dm);
+	object_localisation_morphological_closing(${swblock.chanends.c_dm);
+	object_localisation_CCA();
+	object_localisation_display_manager(${swblock.chanends.c_dm[]},${swblock.chanends.c_dc});
+	app(${swblock.chanends.c_dm[]};
+  ]]
+}
+
+files = {
+  ["module_object_localisation/binarisation_conf_example.h"] = "src/binarisation_conf.h",
+  ["module_object_localisation/morph_conf_example.h"] = "src/morph_conf.h",
+  ["module_object_localisation/CCA_conf_example.h"] = "src/CCA_conf.h",
+  ["module_object_localisation/display_manager_conf_example.h"] = "src/display_manager_conf.h",
+}
+
+api = {
+       'object_localisation_otsu_threshold',
+	  'object_localisation_binarisation',
+      'object_localisation_morphological_closing',
+	  'object_localisation_CCA',
+	  'object_localisation_display_manager'
+      }
+
