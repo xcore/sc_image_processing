@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include <print.h>
-#include <assert.h>
+#include <xassert.h>
 
 #include "otsu_threshold.h"
 #include "display_manager.h"
@@ -122,11 +122,7 @@ int object_localisation_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigne
 
 	}
 
-
-	if (hist_range<5) {
-		printstrln("Could not find Otsu's threshold due to negative variance");
-		assert(0);
-	}
+	assert((hist_range>=5) && msg("Could not find Otsu's threshold due to negative variance"));
 
 	kStar /= count;
 	return (kStar);

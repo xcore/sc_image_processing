@@ -1,10 +1,9 @@
 #include <stdint.h>
 
-#include "display_manager_conf.h"
 #include "display_manager.h"
+#include "display_manager_conf.h"
 #include "display_controller.h"
 #include "lcd_defines.h"
-// TODO: change to lcd.h if necessary
 
 static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 {

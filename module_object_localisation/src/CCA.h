@@ -2,17 +2,20 @@
 #ifndef CCA_H_
 #define CCA_H_
 
-typedef struct{
+typedef struct{	// Bounding box coordinates
 	int xMin;
 	int yMin;
 	int xMax;
 	int yMax;
 } boundBox_struct;
 
-typedef struct{
+typedef struct{	// Center of gravity coordinates
 	int x;
 	int y;
 } cog_struct;
+
+// Function to find the minimum of four labels. Returns non-zero minimum.
+static int min_label(int a,int b,int c,int d);
 
 /** \brief Single pass connected component analysis.
  *

@@ -177,6 +177,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.xc.compiler.input.1718159127" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
 							</tool>
@@ -309,6 +313,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.c.compiler.input.c.2084706997" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
@@ -447,6 +455,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.cxx.compiler.input.cpp.895073305" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>
@@ -655,6 +667,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.xc.compiler.input.448412219" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
 							</tool>
@@ -787,6 +803,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.c.compiler.input.c.114892567" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
@@ -925,6 +945,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_display_controller}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_lcd/src/devices}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localisation/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_xassert/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.cxx.compiler.input.cpp.259263881" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>

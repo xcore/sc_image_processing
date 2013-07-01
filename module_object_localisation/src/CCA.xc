@@ -3,15 +3,13 @@
  *********************************************************/
 
 #include <stdint.h>
-#include <assert.h>
+#include <xassert.h>
 
-#include "CCA_conf.h"
 #include "CCA.h"
+#include "CCA_conf.h"
 #include "lcd.h"
 #include "display_manager.h"
 
-
-// FUNCTION TO FIND THE MINIMUM OF FOUR LABELS
 
 static int min_label(int a,int b,int c,int d)
 {
@@ -22,7 +20,7 @@ static int min_label(int a,int b,int c,int d)
 	if(c && c<m) m=c;
 	if(d && d<m) m=d;
 
-	return m; //Returns non-zero minimum;
+	return m;
 }
 
 
@@ -86,7 +84,7 @@ int object_localisation_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHei
 					rowBuff[j]=labelNo; // A,B,C,D are background hence assigning a new label
 					mergerTable[labelNo]=labelNo; //Updating the new label in the merger table
 					labelNo++;
-					assert(labelNo<=OBJECT_LOCALISATION_CCA_MAX_LABEL);
+					assert((labelNo<=OBJECT_LOCALISATION_CCA_MAX_LABEL) && msg("Increase the maximum number of labels"));
 				}
 
 				if(A||B||C||D) //if any of A,B,C,D is not a background pixel

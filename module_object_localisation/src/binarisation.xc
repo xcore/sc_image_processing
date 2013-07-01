@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 
+#include "binarisation.h"
 #include "binarisation_conf.h"
 #include "lcd.h"
 #include "display_manager.h"
