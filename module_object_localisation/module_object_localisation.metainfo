@@ -133,7 +133,7 @@ generatedCode = {
 	object_localisation_otsu_threshold(${swblock.chanends.c_dm});
 	object_localisation_binarisation(${swblock.chanends.c_dm});
 	object_localisation_morphological_closing(${swblock.chanends.c_dm});
-	object_localisation_CCA();
+	object_localisation_CCA(${swblock.chanends.c_dm});
   ]]
 }
 
