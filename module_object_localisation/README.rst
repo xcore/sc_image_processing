@@ -1,10 +1,10 @@
-Object Localisation Module 
-==========================
+Object Localisation Processing Components 
+=========================================
 
 :scope: General Use
 :description: Component for object localisation on images
 :keywords: Otsu's threshold, morphological operation, connected component analysis
-:boards: XA-SK-SDRAM
+:boards: XA-SK-SDRAM, XA-SK-SCR480
 
 Key Features
 ------------

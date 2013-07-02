@@ -130,12 +130,10 @@ generatedCode = {
   globals = [[  ]],
 
   body = [[
-	object_localisation_otsu_threshold(${swblock.chanends.c_dm);
-	object_localisation_binarisation(${swblock.chanends.c_dm);
-	object_localisation_morphological_closing(${swblock.chanends.c_dm);
+	object_localisation_otsu_threshold(${swblock.chanends.c_dm});
+	object_localisation_binarisation(${swblock.chanends.c_dm});
+	object_localisation_morphological_closing(${swblock.chanends.c_dm});
 	object_localisation_CCA();
-	object_localisation_display_manager(${swblock.chanends.c_dm[]},${swblock.chanends.c_dc});
-	app(${swblock.chanends.c_dm[]};
   ]]
 }
 
