@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<xpd>
+    <components>
+        <component name = "Parallel RGB LCD Driver" type = "component" buildresults_path = "module_lcd/.module_lcd.buildinfo" scope = "General Use" path = "module_lcd" metainfo_path = "module_lcd/module_lcd.metainfo" local = "false" id = "module_lcd" description = "Server component for driving LCDs with an RGB 565 interface up to 800x600 pixels">
+            <board>XA-SK-SCR480</board>
+            <keyword>LCD</keyword>
+            <keyword>TFT</keyword>
+            <keyword>RGB565</keyword>
+            <keyword>Display</keyword>
+        </component>
+        <component name = "SDRAM Memory Controller" type = "component" buildresults_path = "module_sdram/.module_sdram.buildinfo" scope = "General Use" path = "module_sdram" metainfo_path = "module_sdram/module_sdram.metainfo" local = "false" id = "module_sdram" description = "An SDRAM controller designed for 16 bit read and write access of arbitrary length to external SDRAM at up to 50MHz clock rates.">
+            <board>XA-SK-SDRAM</board>
+            <keyword>SDRAM</keyword>
+            <keyword>memory</keyword>
+        </component>
+        <component name = "Lightweight and flexible assertion module" type = "component" buildresults_path = "module_xassert/.module_xassert.buildinfo" scope = "General Use" path = "module_xassert" metainfo_path = "module_xassert/module_xassert.metainfo" local = "false" id = "module_xassert" description = "Lightweight and flexible assertion module">
+            <keyword>debug</keyword>
+            <keyword>assertion</keyword>
+            <keyword>assert</keyword>
+        </component>
+        <component name = "Touch Screen Driver" type = "component" buildresults_path = "module_touch_controller_lib/.module_touch_controller_lib.buildinfo" scope = "General Use" path = "module_touch_controller_lib" metainfo_path = "module_touch_controller_lib/module_touch_controller_lib.metainfo" local = "false" id = "module_touch_controller_lib" description = "Component for driving touch screen with low voltage controller">
+            <board>XA-SK-SCR480</board>
+            <keyword>Touch screen</keyword>
+            <keyword>Controller</keyword>
+            <keyword>I2C</keyword>
+        </component>
+        <component name = "Display Controller" type = "component" buildresults_path = "module_display_controller/.module_display_controller.buildinfo" scope = "General Use" path = "module_display_controller" metainfo_path = "module_display_controller/module_display_controller.metainfo" local = "false" id = "module_display_controller" description = "Display Controller component for driving LCDs with an RGB 565 interface up to 800x600 pixels with a managed SDRAM image buffer.">
+            <board>XA-SK-SCR480</board>
+            <board>XA-SK-SDRAM</board>
+            <componentDependency>module_sdram</componentDependency>
+            <componentDependency>module_lcd</componentDependency>
+            <keyword>LCD</keyword>
+            <keyword>TFT</keyword>
+            <keyword>RGB565</keyword>
+            <keyword>Display</keyword>
+            <keyword>SDRAM</keyword>
+        </component>
+        <component description = "A demonstration of basic machine vision techniques on xCore multicore microcontrollers" type = "demoCode" scope = "Example" path = "app_object_localisation" local = "false" id = "app_object_localisation" name = "Object Localisation Demo">
+            <board>XA-SK-SCR480</board>
+            <board>XA-SK-SDRAM</board>
+            <componentDependency>module_i2c_master</componentDependency>
+            <componentDependency>module_slicekit_support</componentDependency>
+            <componentDependency>module_sdram</componentDependency>
+            <componentDependency>module_display_controller</componentDependency>
+            <componentDependency>module_lcd</componentDependency>
+            <componentDependency>module_touch_controller_lib</componentDependency>
+            <componentDependency>module_object_localisation</componentDependency>
+            <componentDependency>module_xassert</componentDependency>
+            <keyword>Machine Vision</keyword>
+            <keyword>Image Processing</keyword>
+            <keyword>LCD</keyword>
+        </component>
+        <component name = "I2C Master (Single Bit Ports) Function Library" type = "component" buildresults_path = "module_i2c_master/.module_i2c_master.buildinfo" scope = "General Use" path = "module_i2c_master" metainfo_path = "module_i2c_master/module_i2c_master.metainfo" local = "false" id = "module_i2c_master" description = "Function Library implementing basic multi master I2C read and write functionality, designed for use with 1 bit ports">
+            <board>XA-SK-GPIO</board>
+            <keyword>I2C</keyword>
+        </component>
+        <component name = "Object Localisation Processing Components" type = "component" buildresults_path = "module_object_localisation/.module_object_localisation.buildinfo" scope = "General Use" path = "module_object_localisation" metainfo_path = "module_object_localisation/module_object_localisation.metainfo" local = "false" id = "module_object_localisation" description = "Component for object localisation on images">
+            <board>XA-SK-SDRAM</board>
+            <board>XA-SK-SCR480</board>
+            <componentDependency>module_sdram</componentDependency>
+            <componentDependency>module_display_controller</componentDependency>
+            <componentDependency>module_lcd</componentDependency>
+            <keyword>Otsu's threshold</keyword>
+            <keyword>morphological operation</keyword>
+            <keyword>connected component analysis</keyword>
+        </component>
+    </components>
+    <dependency repo = "sc_image_processing-old">
+        <githash>f998de6b5a014e0271f3ed64953a365d41f937f5</githash>
+        <uri>https://github.com/xcore/sc_image_processing.git</uri>
+    </dependency>
+    <description>This component is a machine vision application. It locates the objects in a given colour or gray image. The image should contain bright objects on a dark background or vice versa.</description>
+    <location>https://github.com/xcore/sc_image_processing.git</location>
+    <name>sc_image_processing</name>
+    <maintainer>sudhanatraj</maintainer>
+    <vendor>XMOS</vendor>
+    <xcore_repo>sc_image_processing.git</xcore_repo>
+    <xpd_version>1.0</xpd_version>
+</xpd>
