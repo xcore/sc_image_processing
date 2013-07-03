@@ -1,7 +1,7 @@
 Object Localisation Processing Components 
 =========================================
 
-:scope: General Use
+:scope: Example
 :description: Component for object localisation on images
 :keywords: Otsu's threshold, morphological operation, connected component analysis
 :boards: XA-SK-SDRAM, XA-SK-SCR480

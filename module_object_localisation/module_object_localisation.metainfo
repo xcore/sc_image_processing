@@ -97,7 +97,39 @@ configPoints =
 
 derivedValues = {}
 
-ports = {}
+ports = {
+  p_sdram_adq = {
+    short   = "sdram_adq",
+    long    = "Combined SDRAM Address/Data Bus/Bank Address",
+    help    = "",
+    width   = 16
+  },
+  p_sdram_cas = {
+    short   = "sdram_cas",
+    long    = "Column Address Strobe",
+    help    = "",
+    width   = 1
+  },
+  p_sdram_ras = {
+    short   = "sdram_ras",
+    long    = "Row Address Strobe",
+    help    = "",
+    width   = 1
+  },
+  p_sdram_we = {
+    short   = "sdram_we",
+    long    = "SDRAM Write Enable",
+    help    = "",
+    width   = 1
+  },
+  p_sdram_clk = {
+    short   = "sdram_clk",
+    long    = "SDRAM Clock",
+    help    = "",
+    width   = 1
+  }
+
+}
 
 channels = {
 	c_dm = {
@@ -125,9 +157,18 @@ end
 
 
 generatedCode = {
-  includes = {"binarisation.h","CCA.h","morph_closing.h","Otsu_threshold.h","display_manager.h"},
+  includes = {"sdram.h","lcd.h","display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h"},
 
-  globals = [[  ]],
+  globals = [[  
+    sdram_ports_${swblock.params.sdram_target} sdram_${swblock.id}_resources = { 
+      ${swblock.ports.p_sdram_adq},  
+      ${swblock.ports.p_sdram_cas}, 
+      ${swblock.ports.p_sdram_ras},  
+      ${swblock.ports.p_sdram_we}, 
+      ${swblock.ports.p_sdram_clk}, 
+      ${swblock.clocks[1]}
+    };
+]],
 
   body = [[
 	object_localisation_otsu_threshold(${swblock.chanends.c_dm});
