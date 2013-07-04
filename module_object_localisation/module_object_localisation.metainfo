@@ -184,8 +184,8 @@ files = {
   ["module_object_localisation/morph_conf_example.h"] = "src/morph_conf.h",
   ["module_object_localisation/CCA_conf_example.h"] = "src/CCA_conf.h",
   ["module_object_localisation/display_manager_conf_example.h"] = "src/display_manager_conf.h",
-  ["module_sdram/sdram_conf_example.h"] = "src/sdram_conf.h",
-  ["module_lcd/lcd_conf_example.h"] = "src/lcd_conf.h",
+  ["module_object_localisation/sdram_conf_example.h"] = "src/sdram_conf.h",
+  ["module_object_localisation/lcd_conf_example.h"] = "src/lcd_conf.h",
 }
 
 api = {
