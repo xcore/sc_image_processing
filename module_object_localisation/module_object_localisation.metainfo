@@ -157,7 +157,8 @@ end
 
 
 generatedCode = {
-  includes = {"sdram.h","lcd.h","display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h"},
+  includes = {"sdram.h","lcd.h","display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h",
+"sdram_conf.h","lcd_conf.h","binarisation_conf.h","CCA_conf.h","morph_conf.h","display_manager_conf.h"},
 
   globals = [[  
     sdram_ports_${swblock.params.sdram_target} sdram_${swblock.id}_resources = { 
@@ -183,6 +184,8 @@ files = {
   ["module_object_localisation/morph_conf_example.h"] = "src/morph_conf.h",
   ["module_object_localisation/CCA_conf_example.h"] = "src/CCA_conf.h",
   ["module_object_localisation/display_manager_conf_example.h"] = "src/display_manager_conf.h",
+  ["module_sdram/sdram_conf_example.h"] = "src/sdram_conf.h",
+  ["module_lcd/lcd_conf_example.h"] = "src/lcd_conf.h",
 }
 
 api = {

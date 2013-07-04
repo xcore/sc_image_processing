@@ -28,10 +28,6 @@
             <keyword>connected component analysis</keyword>
         </component>
     </components>
-    <dependency repo = "sc_image_processing-old">
-        <githash>f998de6b5a014e0271f3ed64953a365d41f937f5</githash>
-        <uri>https://github.com/xcore/sc_image_processing.git</uri>
-    </dependency>
     <dependency repo = "sc_lcd">
         <githash>b388b108ace3bbbd2ff380c9ad6c9db9168121fd</githash>
         <uri>https://github.com/xcore/sc_lcd.git</uri>
