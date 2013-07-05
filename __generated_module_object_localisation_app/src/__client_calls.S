@@ -1,5 +1,0 @@
-.word object_localisation_otsu_threshold
-.word object_localisation_binarisation
-.word object_localisation_morphological_closing
-.word object_localisation_CCA
-.word object_localisation_display_manager

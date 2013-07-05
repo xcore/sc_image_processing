@@ -157,25 +157,16 @@ end
 
 
 generatedCode = {
-  includes = {"sdram.h","lcd.h","display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h",
-"sdram_conf.h","lcd_conf.h","binarisation_conf.h","CCA_conf.h","morph_conf.h","display_manager_conf.h"},
+  includes = {"display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h"},
 
-  globals = [[  
-    sdram_ports_${swblock.params.sdram_target} sdram_${swblock.id}_resources = { 
-      ${swblock.ports.p_sdram_adq},  
-      ${swblock.ports.p_sdram_cas}, 
-      ${swblock.ports.p_sdram_ras},  
-      ${swblock.ports.p_sdram_we}, 
-      ${swblock.ports.p_sdram_clk}, 
-      ${swblock.clocks[1]}
-    };
-]],
+  globals = [[  ]],
 
   body = [[
-	object_localisation_otsu_threshold(${swblock.chanends.c_dm});
-	object_localisation_binarisation(${swblock.chanends.c_dm});
-	object_localisation_morphological_closing(${swblock.chanends.c_dm});
-	object_localisation_CCA(${swblock.chanends.c_dm});
+	object_localisation_otsu_threshold(${swblock.chanends.c_dm},image,imgHeight,imgWidth);
+	object_localisation_binarisation(${swblock.chanends.c_dm},image,binImage,imgHeight,imgWidth,threshold);
+	object_localisation_morphological_closing(${swblock.chanends.c_dm},binImage,imgHeight,imgWidth);
+	object_localisation_CCA(${swblock.chanends.c_dm},binImage,imgHeight,imgWidth,boundBox,area,cog);
+	object_localisation_display_manager(${swblock.chanends.c_dm},${swblock.chanends.c_dc});
   ]]
 }
 
