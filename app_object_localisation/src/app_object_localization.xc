@@ -158,7 +158,7 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 
 }
 
-#define	N_STAGES 4
+#define N_STAGES 4
 void app(chanend c_dispMan[])
 {
 	streaming chan c_loader;
