@@ -22,7 +22,7 @@ configPoints =
     long    = "Image containing bright objects on a dark background",
     help    = "This selects the type of image to be binarised.",
     units   = "",
-    define  = "BRIGHT_OBJ_DARK_BG",
+    define  = "OBJECT_LOCALISATION_BRIGHT_OBJ_DARK_BG",
     type    = "int",
     options = {0,1},
     resourceUsageFlags = {},
@@ -136,6 +136,7 @@ channels = {
 		short = "Display manager channel",
 		long = "Channel that connects a client to display manager",
 		help = "",
+		arraySize = swblock.params.channels
 	},
 
 	c_dc = {
@@ -157,7 +158,8 @@ end
 
 
 generatedCode = {
-  includes = {"display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h"},
+  includes = {"display_controller.h","binarisation.h","CCA.h","morph_closing.h","otsu_threshold.h","display_manager.h",
+"CCA_conf.h","display_manager_conf.h"},
 
   globals = [[  ]],
 
@@ -165,14 +167,14 @@ generatedCode = {
 
 	unsigned image, binImage;
 	unsigned short imgHeight, imgWidth;
-	int area, threshold;
-	boundBox_struct boundBox;
-	cog_struct cog;
+	int area[${swblock.params.CCA_max_label}+1], threshold;
+	boundBox_struct boundBox[${swblock.params.CCA_max_label}+1];
+	cog_struct cog[${swblock.params.CCA_max_label}+1];
 
-	object_localisation_otsu_threshold(${swblock.chanends.c_dm},image,imgHeight,imgWidth);
-	object_localisation_binarisation(${swblock.chanends.c_dm},image,binImage,imgHeight,imgWidth,threshold);
-	object_localisation_morphological_closing(${swblock.chanends.c_dm},binImage,imgHeight,imgWidth);
-	object_localisation_CCA(${swblock.chanends.c_dm},binImage,imgHeight,imgWidth,boundBox,area,cog);
+	object_localisation_otsu_threshold(${swblock.chanends.c_dm}[0],image,imgHeight,imgWidth);
+	object_localisation_binarisation(${swblock.chanends.c_dm}[1],image,binImage,imgHeight,imgWidth,threshold);
+	object_localisation_morphological_closing(${swblock.chanends.c_dm}[2],binImage,imgHeight,imgWidth);
+	object_localisation_CCA(${swblock.chanends.c_dm}[3],binImage,imgHeight,imgWidth,boundBox,area,cog);
 	object_localisation_display_manager(${swblock.chanends.c_dm},${swblock.chanends.c_dc});
   ]]
 }
