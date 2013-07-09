@@ -171,11 +171,13 @@ generatedCode = {
 	boundBox_struct boundBox[${swblock.params.CCA_max_label}+1];
 	cog_struct cog[${swblock.params.CCA_max_label}+1];
 
+	par{
 	object_localisation_otsu_threshold(${swblock.chanends.c_dm}[0],image,imgHeight,imgWidth);
 	object_localisation_binarisation(${swblock.chanends.c_dm}[1],image,binImage,imgHeight,imgWidth,threshold);
 	object_localisation_morphological_closing(${swblock.chanends.c_dm}[2],binImage,imgHeight,imgWidth);
 	object_localisation_CCA(${swblock.chanends.c_dm}[3],binImage,imgHeight,imgWidth,boundBox,area,cog);
 	object_localisation_display_manager(${swblock.chanends.c_dm},${swblock.chanends.c_dc});
+	}
   ]]
 }
 
