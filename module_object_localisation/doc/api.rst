@@ -62,7 +62,7 @@ Configuration Defines
 ---------------------
 
 **OBJECT_LOCALISATION_CCA_MAX_LABEL**
-	This define is used to set the maximum number of labels.
+	This define is used to set the maximum number of labels that may be derived during the connected components step.
 
 API
 ---
@@ -77,6 +77,8 @@ The display manager manages simultaneous access requests to SDRAM and LCD by the
 functions. It receives multiple requests and sends them to display controller which in turn passes
 to SDRAM and LCD servers. The functionality of the display manager is defined in ``display_manager.xc``
 and ``display_manager.h``. The configuration file is ``display_manager_conf.h``.
+
+Refer to the ``Display Controller`` xSOFTip documentation for more details.
 
 Configuration Defines
 ---------------------

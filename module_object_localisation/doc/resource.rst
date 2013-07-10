@@ -6,9 +6,9 @@ The memory and resource requirements for this module:
    +------------------+---------------+
    | Resource         | Usage         |
    +==================+===============+
-   | Logical Cores    | 5            |
+   | Logical Cores    | 5             |
    +------------------+---------------+
-   | Code Memory      | 5776  bytes  |
+   | Code Memory      | 5776  bytes   |
    +------------------+---------------+
    | Data Memory      | 21832  bytes  |
    +------------------+---------------+
@@ -16,5 +16,5 @@ The memory and resource requirements for this module:
    +------------------+---------------+
    | Channels         | 10            |
    +------------------+---------------+
-   | Timers           | 0            |
+   | Timers           | 0             |
    +------------------+---------------+
