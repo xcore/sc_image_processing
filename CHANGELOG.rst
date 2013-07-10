@@ -1,12 +1,6 @@
-<Insert Repo name> Change Log
-=============================
+sc_image_processing Change Log
+==============================
 
-1.1.0
+0.0.1
 -----
-  * Bullet points of features
-  * Another point
-  * ...
-
-1.0.0
------
-  * Initial Version
+  * Initial Version for review
