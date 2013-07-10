@@ -48,6 +48,7 @@
         <githash>930b5d5a705f09e3ff32fc56dc62057d3f550bdc</githash>
         <uri>https://github.com/xcore/sc_sdram_burst.git</uri>
     </dependency>
+    <docdir>module_object_localisation/doc</docdir>
     <description>This component is a machine vision application. It locates the objects in a given colour or gray image. The image should contain bright objects on a dark background or vice versa.</description>
     <location>https://github.com/xcore/sc_image_processing.git</location>
     <name>sc_image_processing</name>
