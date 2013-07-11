@@ -16,16 +16,14 @@
             <keyword>Image Processing</keyword>
             <keyword>LCD</keyword>
         </component>
-        <component name = "Object Localisation Processing Components" type = "component" buildresults_path = "module_object_localisation/.module_object_localisation.buildinfo" scope = "Example" path = "module_object_localisation" metainfo_path = "module_object_localisation/module_object_localisation.metainfo" local = "false" id = "module_object_localisation" description = "Component for object localisation on images">
+        <component name = "Object Localisation Processing Components" type = "component" buildresults_path = "module_object_localisation/.module_object_localisation.buildinfo" scope = "Example" path = "module_object_localisation" metainfo_path = "module_object_localisation/module_object_localisation.metainfo" local = "false" id = "module_object_localisation" description = "Example implementation of a basic image processing pipeline">
             <board>XA-SK-SDRAM</board>
             <board>XA-SK-SCR480</board>
             <componentDependency>module_sdram</componentDependency>
             <componentDependency>module_display_controller</componentDependency>
             <componentDependency>module_xassert</componentDependency>
             <componentDependency>module_lcd</componentDependency>
-            <keyword>Otsu's threshold</keyword>
-            <keyword>morphological operation</keyword>
-            <keyword>connected component analysis</keyword>
+            <keyword>image processing</keyword>
         </component>
     </components>
     <dependency repo = "sc_lcd">
@@ -33,7 +31,7 @@
         <uri>https://github.com/xcore/sc_lcd.git</uri>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>d39a12b0ff7981f59858b9080c6e2c5e801ddf77</githash>
+        <githash>6d6b92f618f55d5378e56831b5930bf384c88a01</githash>
         <uri>https://github.com/xcore/sc_util.git</uri>
     </dependency>
     <dependency repo = "sc_i2c">
@@ -48,12 +46,14 @@
         <githash>930b5d5a705f09e3ff32fc56dc62057d3f550bdc</githash>
         <uri>https://github.com/xcore/sc_sdram_burst.git</uri>
     </dependency>
+    <description>This component is a machine vision application. It locates the objects in a given colour or gray image. The image should contain bright objects on a dark background or vice versa.</description>
     <docdir>app_object_localisation/doc_quickstart</docdir>
     <docdir>module_object_localisation/doc</docdir>
-    <description>This component is a machine vision application. It locates the objects in a given colour or gray image. The image should contain bright objects on a dark background or vice versa.</description>
     <location>https://github.com/xcore/sc_image_processing.git</location>
     <name>sc_image_processing</name>
     <maintainer>sudhanatraj</maintainer>
+    <partnumber>XM-003363-DH</partnumber>
+    <subpartnumber>XM-003364-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xcore_repo>sc_image_processing.git</xcore_repo>
     <xpd_version>1.0</xpd_version>
