@@ -156,37 +156,34 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.337052" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.xc.compiler.input.30111384" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
@@ -298,37 +295,34 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.48907779" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.c.compiler.input.c.56743463" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
@@ -446,37 +440,34 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.19922231" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
@@ -730,37 +721,34 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.43176222" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.xc.compiler.input.88056571" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
@@ -872,37 +860,34 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.27846703" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.c.compiler.input.c.34295761" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
@@ -1020,37 +1005,34 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/images}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/.settings}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_i2c_master}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V2_IS42S16400F}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L16}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src/SLICEKIT-L2}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_slicekit_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src/AD7879-1}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_touch_controller_lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 
 								</option>
 								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.46344905" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
