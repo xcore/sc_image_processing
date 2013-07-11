@@ -1,4 +1,4 @@
-Object Localisation Processing Components 
+Object Localization Processing Components 
 =========================================
 
 :scope: Example
@@ -9,16 +9,16 @@ Object Localisation Processing Components
 Key Features
 ------------
 
-   * An example of a simple image processing pipeline for object localisation
+   * An example of a simple image processing pipeline for object localization
    * Functions implemented are Otsu's threshold computation, binarisation, morphological operations and connected component analysis, each running in their own logical core
    * Design to demonstrate how image processing operations can be pipelined over multiple logical cores on XMOS multicore microcontrollers
    * Requires external SDRAM with SDRAM controller xSOFTip for intermediate frame storage
-   * Results of object localisation are the bounding box coordinates, center of gravity and the area in pixels of objects obtained from connected component analysis
+   * Results of object localization are the bounding box coordinates, center of gravity and the area in pixels of objects obtained from connected component analysis
    
 Description
 -----------
 
-These are components for object localisation, a basic machine vision application. It locates the objects in a given colour or gray image which have bi-modal histograms. Typical usage would be in a low-cost embedded machine vision applications such as toys or industrial inspection featuring reliably controlled lighting conditions.
+These are components for object localization, a basic machine vision application. It locates the objects in a given colour or gray image which have bi-modal histograms. Typical usage would be in a low-cost embedded machine vision applications such as toys or industrial inspection featuring reliably controlled lighting conditions.
 
 XMOS multicore microcontrollers are also highly suitable for less orthodox image processing applications such as optical flow, high speed region-of-interest tracking and blob detection where low cost, low power and small form factor are required where complex PC or DSP based solutions are not feasible.
 
