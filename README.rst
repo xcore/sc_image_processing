@@ -36,10 +36,10 @@ none
 Required Repositories
 =====================
 
-* sc_util
-* sc_lcd
-* sc_i2c
-* sw_display_controller
+* sc_util (git@github.com:xcore/sc_util.git)
+* sc_lcd (git@github.com:xcore/sc_lcd.git)
+* sc_i2c (git@github.com:xcore/sc_i2c.git)
+* sw_display_controller (git@github.com:xcore/sw_display_controller.git)
 
 Support
 =======
