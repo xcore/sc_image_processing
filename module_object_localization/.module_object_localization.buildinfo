@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<allbuildresults>
+<buildresults component="module_object_localisation" packagename="xm-local-sc_image_processing(e787e2c1)" packageversion="e787e2c1" toolsversion="latest">
+<buildresult>
+<configuration>
+<parameter id="bright_obj_dark_bg" value="1"/>
+<parameter id="num_dilate" value="1"/>
+<parameter id="num_erode" value="1"/>
+<parameter id="struc_elmnt_size" value="5"/>
+<parameter id="CCA_max_label" value="200"/>
+<parameter id="channels" value="5"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="5"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="5776"/>
+<resourceusageitem id="datamemory" value="21832"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="0"/>
+<resourceusageitem id="ports16bit" value="1"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="bright_obj_dark_bg" value="0"/>
+<parameter id="num_dilate" value="1"/>
+<parameter id="num_erode" value="1"/>
+<parameter id="struc_elmnt_size" value="5"/>
+<parameter id="CCA_max_label" value="200"/>
+<parameter id="channels" value="5"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="5"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="5776"/>
+<resourceusageitem id="datamemory" value="21832"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="0"/>
+<resourceusageitem id="ports16bit" value="1"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="0"/>
+</resourceusage>
+</buildresult>
+</buildresults>
+</allbuildresults>
