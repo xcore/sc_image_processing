@@ -9,7 +9,7 @@
 #include "lcd.h"
 #include "display_manager.h"
 
-void object_localisation_binarisation(chanend c_dm, unsigned imgHandle, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold)
+void object_localization_binarisation(chanend c_dm, unsigned imgHandle, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold)
 {
 	unsigned buffer[LCD_ROW_WORDS];	//Buffer to store current row
 	intptr_t bufferPtr;
@@ -32,7 +32,7 @@ void object_localisation_binarisation(chanend c_dm, unsigned imgHandle, unsigned
 		for (int c=0; c<imgWidth; c++){
 			unsigned short rgb565 = (buffer,unsigned short[])[c];
 			unsigned char green = (rgb565 & 0x7E0) >> 3; //Green component
-			if (OBJECT_LOCALISATION_BRIGHT_OBJ_DARK_BG)
+			if (OBJECT_LOCALIZATION_BRIGHT_OBJ_DARK_BG)
 				(buffer,unsigned short[])[c] = (green > binThreshold)? 0xffff:0;
 			else
 				(buffer,unsigned short[])[c] = (green <= binThreshold)? 0xffff:0;

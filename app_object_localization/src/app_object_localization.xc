@@ -164,9 +164,9 @@ void app(chanend c_dispMan[])
 	streaming chan c_loader;
 	unsigned image[IMAGE_COUNT], binImage[IMAGE_COUNT], image_no=0;
 	unsigned short imgHeight[IMAGE_COUNT], imgWidth[IMAGE_COUNT];
-	int area[OBJECT_LOCALISATION_CCA_MAX_LABEL+1], area_old[OBJECT_LOCALISATION_CCA_MAX_LABEL+1];
-	boundBox_struct boundBox[OBJECT_LOCALISATION_CCA_MAX_LABEL+1], boundBox_old[OBJECT_LOCALISATION_CCA_MAX_LABEL+1];
-	cog_struct cog[OBJECT_LOCALISATION_CCA_MAX_LABEL+1];
+	int area[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1], area_old[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
+	boundBox_struct boundBox[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1], boundBox_old[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
+	cog_struct cog[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
 	int threshold=0, nCC=0, nCC_old=0;
 	timer t;
 	unsigned time1, time2, maxTime=0;
@@ -188,14 +188,14 @@ void app(chanend c_dispMan[])
 
 		par{
 			if (i<IMAGE_COUNT){
-				threshold = object_localisation_otsu_threshold(c_dispMan[0], image[i], imgHeight[i], imgWidth[i]);
-				object_localisation_binarisation(c_dispMan[0], image[i], binImage[i], imgHeight[i], imgWidth[i], threshold);
+				threshold = object_localization_otsu_threshold(c_dispMan[0], image[i], imgHeight[i], imgWidth[i]);
+				object_localization_binarisation(c_dispMan[0], image[i], binImage[i], imgHeight[i], imgWidth[i], threshold);
 			}
 			if ((i-1)>=0 && (i-1)<IMAGE_COUNT)
-				object_localisation_morphological_closing(c_dispMan[1], binImage[i-1], imgHeight[i-1], imgWidth[i-1]);
+				object_localization_morphological_closing(c_dispMan[1], binImage[i-1], imgHeight[i-1], imgWidth[i-1]);
 
 			if ((i-2)>=0 && (i-2)<IMAGE_COUNT)
-				nCC = object_localisation_CCA(c_dispMan[2], binImage[i-2], imgHeight[i-2], imgWidth[i-2], boundBox, area, cog);
+				nCC = object_localization_CCA(c_dispMan[2], binImage[i-2], imgHeight[i-2], imgWidth[i-2], boundBox, area, cog);
 
 			if ((i-3)>=0 && (i-3)<IMAGE_COUNT)
 				annotate_image(c_dispMan[3], image[i-3], imgHeight[i-3], imgWidth[i-3], nCC_old, boundBox_old, area_old);
@@ -263,11 +263,11 @@ void app(chanend c_dispMan[])
 
 void main(){
 	chan c_dc,c_lcd,c_sdram;
-	chan c_dm[OBJECT_LOCALISATION_CHANNELS];
+	chan c_dm[OBJECT_LOCALIZATION_CHANNELS];
 
 	par{
 		on tile[0]: app(c_dm);
-		on tile[1]: object_localisation_display_manager(c_dm, c_dc);
+		on tile[1]: object_localization_display_manager(c_dm, c_dc);
 		on tile[0]: display_controller(c_dc,c_lcd,c_sdram);
 		on tile[0]: lcd_server(c_lcd,lcdports);
 		on tile[0]: sdram_server(c_sdram,sdramports);

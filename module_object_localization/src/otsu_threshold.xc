@@ -12,7 +12,7 @@
 #include "lcd.h"
 
 
-int object_localisation_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
+int object_localization_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth)
 {
 	unsigned hist_range,min,max;
 	unsigned P[256];		// Cumulative sum

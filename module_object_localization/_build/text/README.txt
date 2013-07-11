@@ -1,5 +1,5 @@
 
-Object Localisation Processing Components
+Object Localization Processing Components
 *****************************************
 
 scope:
@@ -19,7 +19,7 @@ Key Features
 ============
 
    * An examples of a simple image processing pipeline for object
-     localisation
+     localization
 
    * Functions implemented are Otsu's threshold computation,
      binarisation, morphological operations and connected component
@@ -32,7 +32,7 @@ Key Features
    * Requires external SDRAM with SDRAM controller xSOFTip for
      intermediate frame storage
 
-   * Results of object localisation are the bounding box coordinates,
+   * Results of object localization are the bounding box coordinates,
      center of gravity and the area in pixels of objects obtained from
      connected component analysis
 
@@ -40,7 +40,7 @@ Key Features
 Description
 ===========
 
-These are components for object localisation, a basic machine vision
+These are components for object localization, a basic machine vision
 application. It locates the objects in a given colour or gray image
 which have bi-modal histograms. Typical usage would be in a low-cost
 embedded machine vision applications such as toys or industrial

@@ -11,6 +11,6 @@
  * \param imgWidth The image width.
  * \param binThreshold The binary threshold value.
  */
-void object_localisation_binarisation(chanend c_dm, unsigned imgHandle, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold);
+void object_localization_binarisation(chanend c_dm, unsigned imgHandle, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, int binThreshold);
 
 #endif /* BINARISATION_H_ */
