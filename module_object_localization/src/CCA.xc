@@ -13,7 +13,7 @@
 
 static int min_label(int a,int b,int c,int d)
 {
-	int m=OBJECT_LOCALISATION_CCA_MAX_LABEL;
+	int m=OBJECT_LOCALIZATION_CCA_MAX_LABEL;
 
 	if(a) m=a;
 	if(b && b<m) m=b;
@@ -27,14 +27,14 @@ static int min_label(int a,int b,int c,int d)
 // SINGLE PASS CONNECTED COMPONENT ANALYSIS
 // Ref: D.G.Bailey and C.T.Johnston, "Single pass connected component analysis", Image and Vision Computing Conference, Dec 2007.
 
-int object_localisation_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[])
+int object_localization_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[])
 {
 	int cnt=0;
 	unsigned short rgb565;
 	unsigned char green,binVal; 		//Pixel's green component
 	int A=0,B=0,C=0,D=0; 				//Neighbours of a pixel under consideration
 	int labelNo=1; 						//Counter for label
-	int mergerTable[OBJECT_LOCALISATION_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
+	int mergerTable[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1]; 	//Merger table maintaining equivalences among labels
 	int rowBuff[2*LCD_ROW_WORDS]; 		//Row buffer for storing one row of image
 	unsigned i,j,e,e1;
 	unsigned buffer[LCD_ROW_WORDS];	// Buffer for storing image row
@@ -43,7 +43,7 @@ int object_localisation_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHei
 
 	//INITIALISATION
 
-	for(i=0;i<OBJECT_LOCALISATION_CCA_MAX_LABEL+1;i++)
+	for(i=0;i<OBJECT_LOCALIZATION_CCA_MAX_LABEL+1;i++)
 	{
 		boundBox[i].xMin=imgHeight;
 		boundBox[i].yMin=imgWidth;
@@ -84,7 +84,7 @@ int object_localisation_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHei
 					rowBuff[j]=labelNo; // A,B,C,D are background hence assigning a new label
 					mergerTable[labelNo]=labelNo; //Updating the new label in the merger table
 					labelNo++;
-					assert((labelNo<=OBJECT_LOCALISATION_CCA_MAX_LABEL) && msg("Increase the maximum number of labels"));
+					assert((labelNo<=OBJECT_LOCALIZATION_CCA_MAX_LABEL) && msg("Increase the maximum number of labels"));
 				}
 
 				if(A||B||C||D) //if any of A,B,C,D is not a background pixel

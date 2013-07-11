@@ -25,6 +25,6 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc);
  * \param c_dm The channels connecting clients.
  * \param c_dc The channel connecting display controller.
  */
-void object_localisation_display_manager(chanend c_dm[], chanend c_dc);
+void object_localization_display_manager(chanend c_dm[], chanend c_dc);
 
 #endif /* DISPLAY_MANAGER_H_ */

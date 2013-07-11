@@ -157,18 +157,17 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
@@ -285,18 +284,17 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />
@@ -419,18 +417,17 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16400F}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/.settings}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V0}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/src/devices}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_sdram/src/PINOUT_V1_IS42S16160D}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd/.settings}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_lcd}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_object_localization}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_display_controller}&quot;' />

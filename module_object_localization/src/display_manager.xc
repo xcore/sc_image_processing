@@ -70,12 +70,12 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc)
 
 
 
-void object_localisation_display_manager(chanend c_dm[], chanend c_dc){
+void object_localization_display_manager(chanend c_dm[], chanend c_dc){
 	unsigned cmd;
 
 	while (1){
 
-		for (int c=0; c<OBJECT_LOCALISATION_CHANNELS; c++){
+		for (int c=0; c<OBJECT_LOCALIZATION_CHANNELS; c++){
 			select {
 			case c_dm[c] :> cmd:
 				process_command(cmd, c_dm[c], c_dc);

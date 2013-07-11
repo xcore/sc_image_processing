@@ -12,6 +12,6 @@
  * \param imgWidth The image width.
  * \return Threshold value.
  */
-int object_localisation_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth);
+int object_localization_otsu_threshold(chanend c_dm, unsigned imgHandle, unsigned imgHeight, unsigned imgWidth);
 
 #endif /* OTSU_THRESHOLD_H_ */
