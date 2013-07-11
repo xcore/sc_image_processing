@@ -10,7 +10,7 @@
             <componentDependency>module_lcd</componentDependency>
             <keyword>image processing</keyword>
         </component>
-        <component description = "A demonstration of basic machine vision techniques on xCore multicore microcontrollers" type = "demoCode" scope = "Example" path = "app_object_localization" local = "false" id = "app_object_localization" name = "Object Localisation Demo">
+        <component description = "A demonstration of basic machine vision techniques on xCore multicore microcontrollers" type = "demoCode" scope = "Example" path = "app_object_localization" local = "false" id = "app_object_localization" name = "Object Localization Demo">
             <board>XA-SK-SCR480</board>
             <board>XA-SK-SDRAM</board>
             <componentDependency>module_i2c_master</componentDependency>
