@@ -1,7 +1,7 @@
-SPHINX_PROJECT_NAME=Object Localisation Component
+SPHINX_PROJECT_NAME=Object Localization Component
 VERSION=1v0
-DOXYGEN_DIRS= ../../module_object_localisation/src
-SOURCE_INCLUDE_DIRS= ../../module_object_localisation/src
+DOXYGEN_DIRS= ../../module_object_localization/src
+SOURCE_INCLUDE_DIRS= ../../module_object_localization/src
 XDOC_DIR ?= ../../../xdoc
 include $(XDOC_DIR)/Makefile.inc
 

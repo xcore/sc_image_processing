@@ -1,4 +1,4 @@
-.. _object_localisation_api:
+.. _object_localization_api:
 
 API
 ===
@@ -10,7 +10,7 @@ Otsu's Threshold Computation
 
 The function is defined in ``otsu_threshold.xc`` and ``otsu_threshold.h``.
 
-.. doxygenfunction:: object_localisation_otsu_threshold
+.. doxygenfunction:: object_localization_otsu_threshold
 
 Binarisation
 ------------
@@ -21,10 +21,10 @@ The configuration file is ``binarisation_conf.h``.
 Configuration Defines
 +++++++++++++++++++++
 
-**OBJECT_LOCALISATION_BRIGHT_OBJ_DARK_BG**
+**OBJECT_LOCALIZATION_BRIGHT_OBJ_DARK_BG**
 	This define indicates the type of image. It is set to 1 if the image contains bright objects on a dark background and vice versa.
 
-.. doxygenfunction:: object_localisation_binarisation
+.. doxygenfunction:: object_localization_binarisation
 
 Morphological Closing
 ---------------------
@@ -35,16 +35,16 @@ The configuration defines are listed in ``morph_conf.h``.
 Configuration Defines
 +++++++++++++++++++++
 
-**OBJECT_LOCALISATION_NUM_DILATE**
+**OBJECT_LOCALIZATION_NUM_DILATE**
 	This define is used to set the number of times dilation should be performed.
 
-**OBJECT_LOCALISATION_NUM_ERODE**
+**OBJECT_LOCALIZATION_NUM_ERODE**
 	This define is used to set the number of times erosion should be performed.
 
-**OBJECT_LOCALISATION_STRUC_ELMNT_SIZE**
+**OBJECT_LOCALIZATION_STRUC_ELMNT_SIZE**
 	This define is used to set the size of the structuring element.	
 
-.. doxygenfunction:: object_localisation_morphological_closing
+.. doxygenfunction:: object_localization_morphological_closing
 
 Connected Component Analysis
 ----------------------------
@@ -55,10 +55,10 @@ The configuration file is ``CCA_conf.h``.
 Configuration Defines
 +++++++++++++++++++++
 
-**OBJECT_LOCALISATION_CCA_MAX_LABEL**
+**OBJECT_LOCALIZATION_CCA_MAX_LABEL**
 	This define is used to set the maximum number of labels that may be derived during the connected components step.
 
-.. doxygenfunction:: object_localisation_CCA
+.. doxygenfunction:: object_localization_CCA
 
 Display Manager
 ---------------
@@ -74,10 +74,10 @@ Refer to the ``Display Controller`` xSOFTip documentation for more details of th
 Configuration defines needed for use with the Display Controller, if using
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-**OBJECT_LOCALISATION_CHANNELS**
+**OBJECT_LOCALIZATION_CHANNELS**
 	This define is used to indicate the number of channels for clients.
 
 API
 ---
 
-.. doxygenfunction:: object_localisation_display_manager
+.. doxygenfunction:: object_localization_display_manager

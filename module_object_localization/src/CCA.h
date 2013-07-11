@@ -28,6 +28,6 @@ static int min_label(int a,int b,int c,int d);
  * \param cog The center of gravity of connected components.
  * \return Number of connected components.
  */
-int  object_localisation_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[]);
+int  object_localization_CCA(chanend c_dm, unsigned binImgHandle, unsigned imgHeight, unsigned imgWidth, boundBox_struct boundBox[], int area[], cog_struct cog[]);
 
 #endif /* CCA_H_ */
