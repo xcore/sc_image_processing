@@ -53,6 +53,7 @@
     <name>sc_image_processing</name>
     <maintainer>sudhanatraj</maintainer>
     <partnumber>XM-003363-DH</partnumber>
+    <release parenthash = "5b178fa399e36ce43231d3a66fb6351a14c64885" version = "0.0.1beta0"></release>
     <subpartnumber>XM-003364-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xcore_repo>sc_image_processing.git</xcore_repo>
