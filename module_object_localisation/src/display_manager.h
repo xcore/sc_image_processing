@@ -1,6 +1,6 @@
 
-#ifndef OBJECT_LOCALISATION_H_
-#define OBJECT_LOCALISATION_H_
+#ifndef DISPLAY_MANAGER_H_
+#define DISPLAY_MANAGER_H_
 
 enum disp_mngr_cmd{	// Display manager commands
 	REG_IMG,
@@ -27,4 +27,4 @@ static void process_command(unsigned cmd, chanend c_dm, chanend c_dc);
  */
 void object_localisation_display_manager(chanend c_dm[], chanend c_dc);
 
-#endif /* OBJECT_LOCALISATION_H_ */
+#endif /* DISPLAY_MANAGER_H_ */
