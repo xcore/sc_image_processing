@@ -105,7 +105,7 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)
-				(buffer, unsigned short[])[c] = BOX_COLOR;
+				(buffer, unsigned short[])[c] = BOX_COLOUR;
 
 			c_dm <: IMG_WR_LINE;
 			master{
@@ -124,9 +124,9 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 				c_dm :> unsigned;
 
 				c = boundBox[cc].yMin;
-				(buffer, unsigned short[])[c] = BOX_COLOR;
+				(buffer, unsigned short[])[c] = BOX_COLOUR;
 				c = boundBox[cc].yMax;
-				(buffer, unsigned short[])[c] = BOX_COLOR;
+				(buffer, unsigned short[])[c] = BOX_COLOUR;
 
 				c_dm <: IMG_WR_LINE;
 				master{
@@ -145,7 +145,7 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 			c_dm :> unsigned;
 
 			for (c=boundBox[cc].yMin; c<= boundBox[cc].yMax; c++)
-				(buffer, unsigned short[])[c] = BOX_COLOR;
+				(buffer, unsigned short[])[c] = BOX_COLOUR;
 
 			c_dm <: IMG_WR_LINE;
 			master{
@@ -158,7 +158,7 @@ void annotate_image(chanend c_dm, unsigned imgHandle, unsigned short imgHt, unsi
 
 }
 
-#define N_STAGES 4
+#define	N_STAGES 4
 void app(chanend c_dispMan[])
 {
 	streaming chan c_loader;

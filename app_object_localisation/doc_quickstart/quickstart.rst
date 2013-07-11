@@ -75,8 +75,8 @@ Next Steps
 
  #. Try changing the files that are loaded from the host. To do this, generate an image (should have bright objects on a dark background and vice versa), save it in ``tga`` format uncompressed. Save the file(s) into ``images`` folder of ``app_object_localisation`` directory within your workspace. Now, change the ``IMAGE_COUNT`` and add the name of your new image to the array ``images`` defined in ``app_conf.h``. Ensure the filename is less than 30 characters long.
  #. If the images contains dark objects on a bright background, the define ``OBJECT_LOCALISATION_BRIGHT_OBJ_DARK_BG`` in ``binarisation_conf.h`` should be assigned the value 0. 
- #. The color of bounding boxes on objects can be changed from green by redefining ``BOX_COLOR``. 
+ #. The colour of bounding boxes on objects can be changed from green by redefining ``BOX_COLOUR``. 
  #. ``SIZE_THRESHOLD`` in ``app_conf.h`` controls the size in pixels of spurious objects to be ignored. 
- #. Assign 0 to OBJECT_LOCALISATION_NUM_DILATE and OBJECT_LOCALISATION_NUM_ERODE in ``morph_conf.h`` to check the binary image resulting from binarisation and before applying morphological closing.
+ #. Assign 0 to ``OBJECT_LOCALISATION_NUM_DILATE`` and ``OBJECT_LOCALISATION_NUM_ERODE`` in ``morph_conf.h`` to check the binary image resulting from binarisation and before applying morphological closing.
 
     
