@@ -2,9 +2,9 @@
 sc_image_processing
 ............
 
-:Stable release:  eg 0.5.1, 1.1.3, unreleased
+:Stable release:  unreleased
 
-:Status:  eg, Feature complete, draft, idea, alpha
+:Status:  draft
 
 :Maintainer:  sudhanatraj
 
@@ -16,30 +16,33 @@ This component is a machine vision application. It locates the objects in a give
 Key Features
 ============
 
-* <Bullet pointed list of features>
+   * An example of a simple image processing pipeline for object localisation
+   * Functions implemented are Otsu's threshold computation, binarisation, morphological operations and connected component analysis, each running in their own logical core
+   * Design to demonstrate how image processing operations can be pipelined over multiple logical cores on XMOS multicore microcontrollers
+   * Requires external SDRAM with SDRAM controller xSOFTip for intermediate frame storage
+   * Results of object localisation are the bounding box coordinates, center of gravity and the area in pixels of objects obtained from connected component analysis
 
-To Do
-=====
-
-* <Bullet pointed list of missing features>
 
 Firmware Overview
 =================
 
-<One or more paragraphs detailing the functionality of modules and apps in this repo>
+The module_object_localisation contains typical image processing operations performed in locating objects in a given still color/gray image. The app_object_localisation demonstrates a pipelined processing of a sequence of images.
 
 Known Issues
 ============
 
-* <Bullet pointed list of problems>
+none
 
 Required Repositories
-================
+=====================
 
-* <list of repos, likely to include xcommon if it uses the build system>
-* xcommon git\@github.com:xcore/xcommon.git
+* sc_util
+* sc_lcd
+* sc_i2c
+* sw_display_controller
 
 Support
 =======
 
-<Description of support model>
+Issues may be submitted via the Issues tab in this github repo. Response to any issues submitted as at the discretion of the maintainer for this line.
+

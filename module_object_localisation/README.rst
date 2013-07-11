@@ -9,9 +9,9 @@ Object Localisation Processing Components
 Key Features
 ------------
 
-   * An examples of a simple image processing pipeline for object localisation
+   * An example of a simple image processing pipeline for object localisation
    * Functions implemented are Otsu's threshold computation, binarisation, morphological operations and connected component analysis, each running in their own logical core
-   * Design to demonstrate how image processin goperation can be pipelined over multiple logical cores on XMOS multicore microcontrollers
+   * Design to demonstrate how image processing operations can be pipelined over multiple logical cores on XMOS multicore microcontrollers
    * Requires external SDRAM with SDRAM controller xSOFTip for intermediate frame storage
    * Results of object localisation are the bounding box coordinates, center of gravity and the area in pixels of objects obtained from connected component analysis
    
