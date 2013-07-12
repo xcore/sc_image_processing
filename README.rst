@@ -2,7 +2,7 @@
 sc_image_processing
 ............
 
-:Latest release: 0.0.1beta1
+:Latest release: 0.0.1beta2
 :Maintainer: sudhanatraj
 :Description: This component is a machine vision application. It locates the objects in a given colour or gray image. The image should contain bright objects on a dark background or vice versa.
 
