@@ -54,7 +54,8 @@
     <maintainer>sudhanatraj</maintainer>
     <partnumber>XM-003363-DH</partnumber>
     <release parenthash = "5b178fa399e36ce43231d3a66fb6351a14c64885" version = "0.0.1beta0" githash = "a6b3d601df3095acf36851271cf2ec53fe8d1359"></release>
-    <release parenthash = "d0c7f9d0a6be30e687cde7095beb8b2ca2f10cfb" version = "0.0.1beta1"></release>
+    <release parenthash = "d0c7f9d0a6be30e687cde7095beb8b2ca2f10cfb" version = "0.0.1beta1" githash = "5564eeaee2c89ac778ec0f7138e7baf82380d61a"></release>
+    <release parenthash = "0da9eab6da500773f7af3e952917e7831e924762" version = "0.0.1beta2"></release>
     <subpartnumber>XM-003364-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xcore_repo>sc_image_processing.git</xcore_repo>
