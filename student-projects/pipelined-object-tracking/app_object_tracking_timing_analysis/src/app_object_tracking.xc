@@ -87,8 +87,6 @@ void annotate_image(chanend c_dispMan,chanend c_dm, unsigned imgHandle, unsigned
 	unsigned buffer[LCD_ROW_WORDS];
 	intptr_t bufferPtr;
 	int c;
-    timer t;
-	unsigned time;
 
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
@@ -155,13 +153,6 @@ void annotate_image(chanend c_dispMan,chanend c_dm, unsigned imgHandle, unsigned
 			}
 		}
 	}
-    t :> time;
-    t when timerafter(time+TIMER_FREQ/2) :> void;   //introduce delay
-
-	//Displaying Annotated image on LCD screen
-            c_dispMan <: FB_COMMIT;
-	        c_dispMan <: imgHandle;
-
 }
 
 #define	N_STAGES 3
@@ -175,6 +166,9 @@ void app(chanend c_dispMan[])
 	boundBox_struct boundBox[IMAGE_PROCESSING_CCA_MAX_LABEL+1], boundBox_old[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
 	cog_struct cog[IMAGE_PROCESSING_CCA_MAX_LABEL+1];
 	int nCC=0, nCC_old=0;
+	unsigned time1, time2, maxTime=0;
+	unsigned entryTime[IMAGE_COUNT], exitTime[IMAGE_COUNT], cycles, frameRate;
+
 	// Load images to SDRAM
 	printstrln("Loading images. Please wait ........");
 	par{
@@ -182,11 +176,11 @@ void app(chanend c_dispMan[])
 		loader(c_loader);
 	  }
 
-    c_dispMan[0] <: FB_INIT;
-    c_dispMan[0] <: image[0];
-
 	// Connected component analysis in pipeline
 	for (int i=0; i<IMAGE_COUNT+(N_STAGES-1)-1; i++){
+
+		t :> time1;
+		if (i<IMAGE_COUNT-1) entryTime[i] = time1;
 
 		par{
 			if (i<IMAGE_COUNT-1)
@@ -207,19 +201,27 @@ void app(chanend c_dispMan[])
 			boundBox_old[j].yMax = boundBox[j].yMax;
 			area_old[j] = area[j];
 		}
+
+		t :> time2;
+		if ((time2-time1)>maxTime) maxTime = time2-time1;
+		if ((i-(N_STAGES-1))>=0) exitTime[i-(N_STAGES-1)] = time2;
+
 	}
 
-
-	while(1){
-		unsigned time;
-
-	    image_no = (image_no+1)%IMAGE_COUNT;
-
-	    t :> time;
-	    t when timerafter(time+TIMER_FREQ/2) :> void;	//introduce delay
-	    c_dispMan[0] <: FB_COMMIT;
-	    c_dispMan[0] <: image[image_no];
+	printstr ("\nImage		Processing time (ms)\n");
+	for (int i=0; i<IMAGE_COUNT-1; i++){
+		printint(i+1);
+		cycles = exitTime[i]-entryTime[i];
+		printstr("\t\t"); printint(cycles/100000);
+		printstr("\n");
 	}
+	printstr ("\nMaximum time taken by the pipeline stages: ");
+	printint(maxTime/100000);
+	printstrln (" ms");
+	frameRate = TIMER_FREQ/maxTime;
+	printstr ("Frame rate: ");
+	printint (frameRate);
+	printstr("\n");
 
 }
 
