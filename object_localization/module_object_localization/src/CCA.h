@@ -14,8 +14,6 @@ typedef struct{	// Center of gravity coordinates
 	int y;
 } cog_struct;
 
-// Function to find the minimum of four labels. Returns non-zero minimum.
-static int min_label(int a,int b,int c,int d);
 
 /** \brief Single pass connected component analysis.
  *

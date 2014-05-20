@@ -12,12 +12,6 @@ enum disp_mngr_cmd{	// Display manager commands
 	FB_COMMIT
 };
 
-/** \brief Process the command received from a client.
- *
- * \param c_dm The channel connecting the client.
- * \param c_dc The channel connecting display controller.
- */
-static void process_command(unsigned cmd, chanend c_dm, chanend c_dc);
 
 /** \brief Display manager for display controller.
  *  It receives commands from different clients and passes on to display controller for processing.
