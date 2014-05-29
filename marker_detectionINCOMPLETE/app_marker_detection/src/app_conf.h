@@ -5,7 +5,7 @@
 // Bright objects on a dark background will be detected
 
 #define SIZE_THRESHOLD 50	// For removing unwanted connected components
-#define RECT_LENGTH 10  // Length of rectangular region in cms
-#define RECT_BREADTH 8  // Breadth of rectangulat region in cms
+#define RECT_LENGTH 100  // Length of rectangular region in mm
+#define RECT_BREADTH 80  // Breadth of rectangulat region in mm
 
 #endif /* APP_CONF_H_ */
