@@ -118,7 +118,7 @@ void app(chanend c_dispMan[], streaming chanend c_img)
 
 		}
 
-printintln(nCC);  //TODO: pgm not working without print
+		delay_milliseconds(100);    // delay needed for correct functionality
 
 		// Marker coordinates computation
         if ((i-2)>=0 && nCC==2){
@@ -134,8 +134,6 @@ printintln(nCC);  //TODO: pgm not working without print
         }
 
 		i++;
-		delay_seconds(1);
-
 
 	}
 
