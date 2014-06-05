@@ -129,7 +129,7 @@ void app(chanend c_dispMan[], streaming chanend c_img)
                     if (x<0) printstr("-");
                     printint(abs(x)/10); printstr("."); printint(abs(x)%10); printstr(" cm, ");
                     if (y<0) printstr("-");
-                    printint(y/10); printstr("."); printint(abs(y)%10); printstrln(" cm)");
+                    printint(abs(y)/10); printstr("."); printint(abs(y)%10); printstrln(" cm)");
                 }
                 xOld = x; yOld = y;
             }
