@@ -126,11 +126,13 @@ void app(chanend c_dispMan[], streaming chanend c_img)
             if (valid_xy){
                 if (abs(x-xOld)>TOLERANCE || abs(y-yOld)>TOLERANCE){
                     printstr("Marker located at (");
-                    printint(x); printstr(" mm,"); printint(y); printstrln(" mm)");
+                    if (x<0) printstr("-");
+                    printint(abs(x)/10); printstr("."); printint(abs(x)%10); printstr(" cm, ");
+                    if (y<0) printstr("-");
+                    printint(y/10); printstr("."); printint(abs(y)%10); printstrln(" cm)");
                 }
                 xOld = x; yOld = y;
             }
-            delay_seconds(1);   // To wait for the move.
         }
 
 		i++;
