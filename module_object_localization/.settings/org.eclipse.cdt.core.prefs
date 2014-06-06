@@ -1,0 +1,7 @@
+#Wed May 07 14:08:16 IST 2014
+eclipse.preferences.version=1
+environment/project/com.xmos.cdt.toolchain.24354199/XMOS_MODULE_PATH/delimiter=;
+environment/project/com.xmos.cdt.toolchain.24354199/XMOS_MODULE_PATH/operation=append
+environment/project/com.xmos.cdt.toolchain.24354199/XMOS_MODULE_PATH/value=D\:\\Sudha\\workspace\\object-tracking-camera\\app_object_tracking;D\:\\Sudha\\workspace\\object-tracking-camera\\module_display_controller;D\:\\Sudha\\workspace\\object-tracking-camera\\module_i2c_master;D\:\\Sudha\\workspace\\object-tracking-camera\\module_lcd;D\:\\Sudha\\workspace\\object-tracking-camera\\module_sdram;D\:\\Sudha\\workspace\\object-tracking-camera\\module_slicekit_support;D\:\\Sudha\\workspace\\object-tracking-camera\\module_xassert
+environment/project/com.xmos.cdt.toolchain.24354199/append=true
+environment/project/com.xmos.cdt.toolchain.24354199/appendContributed=true
