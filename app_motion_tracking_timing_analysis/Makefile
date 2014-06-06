@@ -6,10 +6,10 @@ TARGET = SLICEKIT-L2
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to
 # the project name
-APP_NAME = app_object_tracking_timing_analysis
+APP_NAME = app_motion_tracking_timing_analysis
 
 # The USED_MODULES variable lists other module used by the application.
-USED_MODULES = module_display_controller module_lcd module_object_tracking module_sdram module_slicekit_support
+USED_MODULES = module_display_controller module_lcd module_motion_tracking module_sdram module_slicekit_support
 
 
 # The flags passed to xcc when building the application
