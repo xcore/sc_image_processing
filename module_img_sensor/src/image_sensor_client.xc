@@ -152,13 +152,12 @@ void color_interpolation(chanend c_dm, unsigned frBuf, unsigned height, unsigned
         (rgb565,unsigned short[])[width-1] = 0;
 
         asm("mov %0, %1" : "=r"(bufferPtr) : "r"(rgb565));
-        c_dm <: IMG_RD_LINE;
+        c_dm <: IMG_WR_LINE;
         master {
             c_dm <: frBuf;
             c_dm <: row;
             c_dm <: bufferPtr;
         }
-        c_dm :> unsigned;
 
     }
 
