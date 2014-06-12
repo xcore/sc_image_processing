@@ -191,6 +191,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}target/include/xc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.xc.compiler.input.1718159127" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
 							</tool>
@@ -336,6 +343,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.c.compiler.input.c.2084706997" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
@@ -487,6 +501,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.cxx.compiler.input.cpp.895073305" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>
@@ -709,6 +730,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}target/include/xc&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.xc.compiler.input.448412219" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
 							</tool>
@@ -854,6 +882,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.c.compiler.input.c.114892567" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
@@ -1005,6 +1040,13 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_img_sensor}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/doc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_image_sensor_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_object_localization_sdram}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/module_sdram_multiclient/src}&quot;"/>
 								</option>
 								<inputType id="com.xmos.cdt.cxx.compiler.input.cpp.259263881" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>

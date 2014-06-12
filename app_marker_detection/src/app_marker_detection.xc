@@ -5,22 +5,16 @@
 #include <xscope.h>
 #include <stdlib.h>
 
+#include "app_conf.h"
 #include "sdram.h"
-#include "lcd.h"
-#include "display_controller.h"
-#include "display_manager.h"
 #include "otsu_threshold.h"
 #include "binarization.h"
 #include "morph_closing.h"
 #include "CCA.h"
-#include "app_conf.h"
 #include "CCA_conf.h"
-#include "display_manager_conf.h"
 #include "image_sensor.h"
 
 //Port declaration
-on tile[0] : lcd_ports lcdports = {  //triangle slot
-  XS1_PORT_1I, XS1_PORT_1L, XS1_PORT_16B, XS1_PORT_1J, XS1_PORT_1K, XS1_CLKBLK_1 };
 on tile[0] : sdram_ports sdramports = {  //star slot
   XS1_PORT_16A, XS1_PORT_1B, XS1_PORT_1G, XS1_PORT_1C, XS1_PORT_1F, XS1_CLKBLK_2 };
 on tile[1] : image_sensor_ports imgports = { //circle slot
@@ -29,26 +23,18 @@ on tile[1] : image_sensor_ports imgports = { //circle slot
 };
 
 #define N_STAGES 3
-void allocate_image_space(chanend c_dm, unsigned image[], unsigned binImage[])
+typedef struct imgHandle{
+    unsigned sdramBank;
+    unsigned sdramRow;
+}imgHandle;
+
+void allocate_image_space(chanend c_dm, imgHandle image[], imgHandle binImage[])
 {
+    unsigned rowIncrement = ((IMG_WIDTH-1)/SDRAM_COL_COUNT)+1;
     for (int i=0; i<N_STAGES; i++){
-
-        // Register image space
-        c_dm <: REG_IMG;
-        master{
-            c_dm <: (unsigned)LCD_ROW_WORDS;
-            c_dm <: (unsigned)LCD_HEIGHT;
-        }
-        c_dm :> image[i];
-
-        // Register binary image space
-        c_dm <: REG_IMG;
-        master{
-            c_dm <: (unsigned)LCD_ROW_WORDS;
-            c_dm <: (unsigned)LCD_HEIGHT;
-        }
-        c_dm :> binImage[i];
-
+            image[i].sdramBank = 0;
+            binImage[i].sdramBank = 1;
+            image[i].sdramRow = binImage[i].sdramRow = i*IMG_HEIGHT*rowIncrement;
     }
 
 }
@@ -56,7 +42,7 @@ void allocate_image_space(chanend c_dm, unsigned image[], unsigned binImage[])
 
 {int,int,int}  locate_marker(int nCC, int area[], cog_struct cog[], boundBox_struct boundBox[]){
     int markerX, markerY, centerX, centerY;
-    unsigned valid_nCC=0, markerArea=LCD_HEIGHT*LCD_WIDTH, rectBoundArea=0;
+    unsigned valid_nCC=0, markerArea=IMG_HEIGHT*IMG_WIDTH, rectBoundArea=0;
     int length, breadth;
 
     // Identify marker and the center of rectangular region
@@ -85,9 +71,9 @@ void allocate_image_space(chanend c_dm, unsigned image[], unsigned binImage[])
 
 
 #define TOLERANCE 3
-void app(chanend c_dispMan[], streaming chanend c_img)
+void app(chanend c_sdram[], streaming chanend c_img)
 {
-	unsigned image[N_STAGES], binImage[N_STAGES];
+	imgHandle image[N_STAGES], binImage[N_STAGES];
 	int area[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
 	boundBox_struct boundBox[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
 	cog_struct cog[OBJECT_LOCALIZATION_CCA_MAX_LABEL+1];
@@ -95,26 +81,26 @@ void app(chanend c_dispMan[], streaming chanend c_img)
 	int x,y,xOld=RECT_LENGTH,yOld=RECT_BREADTH,valid_xy;
 
 	// Allocate space on SDRAM for images
-	allocate_image_space(c_dispMan[0], image, binImage);
+	allocate_image_space(c_sdram[0], image, binImage);
 
 	// Init image sensor - Set capture window size
-    image_sensor_set_capture_window(c_img, LCD_HEIGHT, LCD_WIDTH);
+    image_sensor_set_capture_window(c_img, IMG_HEIGHT, IMG_WIDTH);
 
 	// Connected component analysis in pipeline
 	while (1){
 
-        image_sensor_get_frame(c_img, c_dispMan[0], image[i%N_STAGES], LCD_HEIGHT, LCD_WIDTH);
+        image_sensor_get_frame(c_img, c_sdram[0], image[i%N_STAGES].sdramBank, image[i%N_STAGES].sdramRow, IMG_HEIGHT, IMG_WIDTH);
 
 		par{
 			{
-				threshold = object_localization_otsu_threshold(c_dispMan[1], image[i%N_STAGES], LCD_HEIGHT, LCD_WIDTH);
-				object_localization_binarization(c_dispMan[1], image[i%N_STAGES], binImage[i%N_STAGES], LCD_HEIGHT, LCD_WIDTH, threshold);
+				threshold = object_localization_otsu_threshold(c_sdram[1], image[i%N_STAGES].sdramBank, image[i%N_STAGES].sdramRow, IMG_HEIGHT, IMG_WIDTH);
+				object_localization_binarization(c_sdram[1], image[i%N_STAGES].sdramBank, image[i%N_STAGES].sdramRow, binImage[i%N_STAGES].sdramBank, binImage[i%N_STAGES].sdramRow, IMG_HEIGHT, IMG_WIDTH, threshold);
 			}
 			if ((i-1)>=0)
-				object_localization_morphological_closing(c_dispMan[2], binImage[(i-1)%N_STAGES], LCD_HEIGHT, LCD_WIDTH);
+				object_localization_morphological_closing(c_sdram[2], binImage[(i-1)%N_STAGES].sdramBank, binImage[(i-1)%N_STAGES].sdramRow, IMG_HEIGHT, IMG_WIDTH);
 
 			if ((i-2)>=0)
-				nCC = object_localization_CCA(c_dispMan[3], binImage[(i-2)%N_STAGES], LCD_HEIGHT, LCD_WIDTH, boundBox, area, cog);
+				nCC = object_localization_CCA(c_sdram[3], binImage[(i-2)%N_STAGES].sdramBank, binImage[(i-2)%N_STAGES].sdramRow, IMG_HEIGHT, IMG_WIDTH, boundBox, area, cog);
 
 		}
 
@@ -145,16 +131,12 @@ void app(chanend c_dispMan[], streaming chanend c_img)
 
 
 int main(){
-	chan c_dc,c_lcd,c_sdram;
+	chan c_dc,c_sdram[SDRAM_CLIENT_COUNT];
 	streaming chan c_img_sen;
-	chan c_dm[OBJECT_LOCALIZATION_CHANNELS];
 
 	par{
-		on tile[0]: app(c_dm,c_img_sen);
+		on tile[0]: app(c_sdram,c_img_sen);
         on tile[1]: image_sensor_server(imgports, c_img_sen);
-		on tile[1]: object_localization_display_manager(c_dm, c_dc);
-		on tile[0]: display_controller(c_dc,c_lcd,c_sdram);
-		on tile[0]: lcd_server(c_lcd,lcdports);
 		on tile[0]: sdram_server(c_sdram,sdramports);
 	}
 
