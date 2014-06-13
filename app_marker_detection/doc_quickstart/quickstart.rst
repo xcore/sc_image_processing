@@ -74,3 +74,4 @@ Next Steps
 ++++++++++
 
  #. Try changing the location of the marker in run-time. The new coordinates will be reported. Any intermediate reporting while changing the location should be ignored.
+ #. Try the demo with a different rectangular grid. To do this, draw a thick bright colored rectangle of different dimensions on a dark background  using a drawing tool. The grid inside the rectangle is optional. Take a printout of it and use it in the setup. Enter the dimensions of the rectangle in ``app_conf.h``. Compile and run the application.
