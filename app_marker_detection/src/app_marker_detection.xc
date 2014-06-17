@@ -107,7 +107,8 @@ void app(chanend c_sdram[], streaming chanend c_img)
 		delay_milliseconds(100);    // delay needed for correct functionality
 
 		// Marker coordinates computation
-        if ((i-2)>=0 && nCC==2){
+//		if ((i-2)>=0){
+		if ((i-2)>=0 && nCC==2){
             {x,y,valid_xy} = locate_marker(nCC, area, cog, boundBox);
             if (valid_xy){
                 if (abs(x-xOld)>TOLERANCE || abs(y-yOld)>TOLERANCE){

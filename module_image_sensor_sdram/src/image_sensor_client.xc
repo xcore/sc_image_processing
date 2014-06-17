@@ -23,7 +23,7 @@ inline unsafe void get_row(streaming chanend c, unsigned * unsafe dataPtr, unsig
 #pragma unsafe arrays
 inline unsafe void store_row (chanend c_sdram, unsigned row, unsigned width, unsigned SDRAMfrBufBank, unsigned SDRAMfrBufRow, intptr_t buf){
     unsigned widthWords = width/2;
-    unsigned rowIncrement = ((width-1)/256)+1;
+    unsigned rowIncrement = ((width-1)/SDRAM_COL_COUNT)+1;
     unsigned startRow = SDRAMfrBufRow + row*rowIncrement;
     sdram_buffer_write_p(c_sdram, SDRAMfrBufBank, startRow, 0, widthWords, buf);
     sdram_wait_until_idle_p(c_sdram,buf);
@@ -78,6 +78,7 @@ void color_interpolation(chanend c_sdram, unsigned SDRAMfrBufBank, unsigned SDRA
         unsigned startRow = SDRAMfrBufRow + i*rowIncrement;
         sdram_buffer_read_p(c_sdram, SDRAMfrBufBank, startRow, 0, widthWords, bufferPtr);
         sdram_wait_until_idle_p(c_sdram,bufferPtr);
+
 
         if (row&1){
             for (unsigned j=1; j<width-1; j+=2){    // odd row, odd col, green pix

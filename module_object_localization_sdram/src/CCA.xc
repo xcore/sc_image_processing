@@ -41,7 +41,7 @@ int object_localization_CCA(chanend c_sdram, unsigned binImgSDRAMbank, unsigned 
 	intptr_t bufferPtr;
 
 
-	//INITIALISATION
+	//INITIALIZATION
 
 	for(i=0;i<OBJECT_LOCALIZATION_CCA_MAX_LABEL+1;i++)
 	{
