@@ -1,9 +1,9 @@
 sdram_server.o: \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_server.xc \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_geometry.h \
-  D:/Sudha/workspace/marker-detection/app_marker_detection/src/sdram_conf.h \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_config.h \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_ports.h \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_control.h \
-  D:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_commands.h
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_server.xc \
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_geometry.h \
+  F:/Sudha/workspace/marker-detection/app_marker_detection/src/sdram_conf.h \
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_config.h \
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_ports.h \
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_control.h \
+  F:/Sudha/workspace/marker-detection/module_sdram_multiclient/src/sdram_commands.h
 

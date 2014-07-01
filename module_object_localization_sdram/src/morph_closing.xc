@@ -18,7 +18,7 @@ void object_localization_morphological_closing(chanend c_sdram, unsigned binImgS
     unsigned short index = OBJECT_LOCALIZATION_STRUC_ELMNT_SIZE-1;
 
     unsigned widthWords = imgWidth/2;
-    unsigned rowIncrement = ((imgWidth-1)/SDRAM_COL_COUNT)+1;
+    unsigned rowIncrement = (imgWidth/SDRAM_COL_COUNT)+1;
 
 
 	// Initialize buffer pointers
