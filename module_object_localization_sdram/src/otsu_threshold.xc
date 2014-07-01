@@ -33,7 +33,7 @@ int object_localization_otsu_threshold(chanend c_sdram, unsigned imgSDRAMbank, u
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
     unsigned widthWords = imgWidth/2;
-    unsigned rowIncrement = ((imgWidth-1)/SDRAM_COL_COUNT)+1;
+    unsigned rowIncrement = (imgWidth/SDRAM_COL_COUNT)+1;
 
 	// Read image from SDRAM through display manager and find histogram
 	for (int line=0; line<imgHeight; line++){

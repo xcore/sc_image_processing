@@ -62,7 +62,7 @@ int object_localization_CCA(chanend c_sdram, unsigned binImgSDRAMbank, unsigned 
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
     unsigned widthWords = imgWidth/2;
-    unsigned rowIncrement = ((imgWidth-1)/SDRAM_COL_COUNT)+1;
+    unsigned rowIncrement = (imgWidth/SDRAM_COL_COUNT)+1;
 
 	//SINGLE PASS ALGORITHM BEGINS
 	for(i=0;i<imgHeight;i++)

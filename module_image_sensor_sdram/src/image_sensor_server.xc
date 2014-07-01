@@ -1,5 +1,4 @@
 #include <timer.h>
-#include <print.h>
 
 #include "image_sensor.h"
 #include "image_sensor_defines.h"
@@ -116,7 +115,7 @@ void image_sensor_server(struct image_sensor_ports &imgports, streaming chanend 
 
         } else {
 
-                unsigned n_data = height*width/2;
+                unsigned n_data = height*width/4;
                 unsigned i=0;
 
                 imgports.frame_valid when pinseq(0) :> void;

@@ -19,7 +19,7 @@ void object_localization_binarization(chanend c_sdram, unsigned imgSDRAMbank, un
 	asm("mov %0, %1" : "=r"(bufferPtr) : "r"(buffer));
 
 	unsigned widthWords = imgWidth/2;
-    unsigned rowIncrement = ((imgWidth-1)/SDRAM_COL_COUNT)+1;
+    unsigned rowIncrement = (imgWidth/SDRAM_COL_COUNT)+1;
 
 	for (int r=0; r<imgHeight; r++){
 

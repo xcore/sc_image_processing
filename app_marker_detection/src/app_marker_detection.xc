@@ -18,7 +18,7 @@
 on tile[0] : sdram_ports sdramports = {  //star slot
   XS1_PORT_16A, XS1_PORT_1B, XS1_PORT_1G, XS1_PORT_1C, XS1_PORT_1F, XS1_CLKBLK_2 };
 on tile[1] : image_sensor_ports imgports = { //circle slot
-   XS1_PORT_1J, XS1_PORT_1K, XS1_PORT_1L, XS1_PORT_16B,
+   XS1_PORT_1J, XS1_PORT_1K, XS1_PORT_1L, XS1_PORT_8C,
    {XS1_PORT_1H, XS1_PORT_1I, 1000}, XS1_CLKBLK_1
 };
 
@@ -30,7 +30,7 @@ typedef struct imgHandle{
 
 void allocate_image_space(chanend c_dm, imgHandle image[], imgHandle binImage[])
 {
-    unsigned rowIncrement = ((IMG_WIDTH-1)/SDRAM_COL_COUNT)+1;
+    unsigned rowIncrement = (IMG_WIDTH/SDRAM_COL_COUNT)+1;
     for (int i=0; i<N_STAGES; i++){
             image[i].sdramBank = 0;
             binImage[i].sdramBank = 1;
@@ -62,6 +62,7 @@ void allocate_image_space(chanend c_dm, imgHandle image[], imgHandle binImage[])
                 centerY = length/2 + boundBox[cc].yMin;
             }
         }
+
     if (valid_nCC !=2) return {0,0,0};
 
     // Return the actual coordinates
