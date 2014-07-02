@@ -7,16 +7,16 @@
 #define min(X,Y) ((X) < (Y) ? (X) : (Y))
 #define max(X,Y) ((X) > (Y) ? (X) : (Y))
 
-void skin_pixels(chanend c, unsigned imgHandle, unsigned binImgHandle)
+void skin_pixels(chanend c, unsigned imgHandle, unsigned binImgHandle,unsigned short imgHeight,unsigned short imgWidth)
 {
 	unsigned buffer[LCD_ROW_WORDS],m1,m11,m2,m22;	//Buffer to store current row
 
-	for (int line=0; line<LCD_HEIGHT; line++){
+	for (int line=0; line<imgHeight; line++){
 display_controller_image_read_line(c,line,imgHandle,buffer);
 display_controller_wait_until_idle(c,buffer);
 
 		// Find rgb component of pixels and binarise
-		for (int c=0; c<LCD_ROW_WORDS*2; c++){
+		for (int c=0; c<imgWidth; c++){
 			unsigned short rgb565 = (buffer,unsigned short[])[c];
 			unsigned char b = (rgb565 & 0xf800) >> 8; //Red component
 			unsigned char g = (rgb565 & 0x7E0) >> 3; //Green component

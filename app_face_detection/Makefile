@@ -1,7 +1,7 @@
 # The TARGET variable determines what target system the application is
 # compiled for. It either refers to an XN file in the source directories
 # or a valid argument for the --target option when compiling
-TARGET = SLICEKIT-L16
+TARGET = SLICEKIT-L2
 
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to
@@ -9,7 +9,8 @@ TARGET = SLICEKIT-L16
 APP_NAME = app_face_detection
 
 # The USED_MODULES variable lists other module used by the application.
-USED_MODULES = module_display_controller module_lcd module_sdram module_slicekit_support
+USED_MODULES = module_display_controller module_object_localization module_slicekit_support module_touch_controller_lib module_xassert
+
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
@@ -19,9 +20,8 @@ USED_MODULES = module_display_controller module_lcd module_sdram module_slicekit
 XCC_FLAGS_Debug = -O3 -g
 XCC_FLAGS_Release = -O3 -g
 
-
 # The VERBOSE variable, if set to 1, enables verbose output from the make system.
-VERBOSE = 1
+VERBOSE = 0
 
 XMOS_MAKE_PATH ?= ../..
 -include $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common

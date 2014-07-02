@@ -1,39 +1,35 @@
-.. _Display_Controller_Demo_Quickstart:
+.. _Object_Localization_Quickstart:
 
-Display Controller Demo Quickstart Guide
-========================================
+Object localization Demo Quickstart Guide
+=========================================
 
-sw_display_controller demo : Quick Start Guide
-----------------------------------------------
+This demonstration uses the sliceKIT hardware and xSOFTip components listed below to locate objects (blobs) on still colour or gray images and create an interactive display of processed images on the LCD. It demonstrates a pipeline of typical processing steps common in low cost embedded machine vision and some computer vision applications including "Otsu's" thresholding method, morphological operations and connected component analysis. The results are dislayed interactively on the LCD.
 
-In this demonstration we use the following hardware and software:
-  * XP-SKC-L16 sliceKIT 
-  * XA-SK-SCR480 Slice Card,
-  * XA-SK-SDRAM Slice Card,
-  * module_sdram,
-  * module_lcd,
-  * module_display_controller,
-  * module_i2c_master,
-  * module_touch_controller_lib,
-  * module_slicekit_support,
+  * XA-SK-SCR480 sliceCARD
+  * XA-SK-SDRAM sliceCARD
+  * SDRAM Memory Controller
+  * Parallel RGB LCD Driver
+  * Touch Screen Driver Function Library
 
-together to create an interactive display on LCD. This application showcases some of the key software 
-features and serves as an example on how to use an LCD without the real-time constraint of having to 
-update the LCD line buffer and how to use the touch screen for interactive display. 
+.. figure:: images/blk_diag.jpg
+   :width: 400px
+   :align: center
+
+   Pipelined Stages for Object localization
+   
 
 Hardware Setup
 ++++++++++++++
 
-The XP-SKC-L16 sliceKIT Core board has four slots with edge connectors: ``SQUARE``, ``CIRCLE``, ``TRIANGLE`` 
-and ``STAR``. 
+The XP-SKC-L2 sliceKIT Core board has four slots with edge connectors: ``SQUARE``, ``CIRCLE``, ``TRIANGLE`` and ``STAR``. 
 
 To setup up the system:
 
-   #. Connect XA-SK-SDRAM Slice Card to the XP-SKC-L16 sliceKIT Core board using the connector marked with the ``STAR``.
-   #. Connect XA-SK-SCR480 Slice Card to the XP-SKC-L16 sliceKIT Core board using the connector marked with the ``TRIANGLE``.
-   #. Connect the xTAG Adapter to sliceKIT Core board, and connect xTAG-2 to the adapter. 
-   #. Connect the xTAG-2 to host PC. Note that the USB cable is not provided with the sliceKIT starter kit.
-   #. Set the ``XMOS LINK`` to ``OFF`` on the xTAG Adapter(XA-SK-XTAG2).
+   #. Connect the XA-SK-SDRAM sliceCARD to the XP-SKC-L2 sliceKIT Core bBoard using the connector marked with the ``STAR``.
+   #. Connect the XA-SK-SCR480 sliceCARD to the XP-SKC-L2 sliceKIT Core Board using the connector marked with the ``TRIANGLE``.
+   #. Connect the XTAG Adapter to the sliceKIT Core board, and connect the XTAG-2 to the adapter and the whole assembly to the Core Board. 
+   #. Connect the XTAG-2 to host PC. Note that the USB cable is not provided with the sliceKIT starter kit.
+   #. Set the ``XMOS LINK`` to ``OFF`` on the XTAG Adapter(XA-SK-XTAG2).
    #. Ensure the jumper on the XA-SK-SCR480 is bridged if the back light is required.
    #. Switch on the power supply to the sliceKIT Core board.
 
@@ -41,59 +37,42 @@ To setup up the system:
    :width: 400px
    :align: center
 
-   Hardware Setup for Display Controller Demo
+   Hardware Setup for Object localization Demo
    
 	
 Import and Build the Application
 ++++++++++++++++++++++++++++++++
 
    #. Open xTIMEcomposer and check that it is operating in online mode. Open the edit perspective (Window->Open Perspective->XMOS Edit).
-   #. Locate the ``'Display Controller Demo'`` item in the xSOFTip pane on the bottom left of the window and drag it into the Project Explorer window in the xTIMEcomposer. This will also cause the modules on which this application depends to be imported as well. 
-   #. Click on the app_display_controller_demo item in the Explorer pane then click on the build icon (hammer) in xTIMEcomposer. Check the console window to verify that the application has built successfully.
-   #. There will be quite a number of warnings that ``bidirectional buffered port not supported in hardware``. These can be safely ignored for this component.
+   #. Locate the ``Object localization Demo`` item in the xSOFTip pane on the bottom left of the window and drag it into the Project Explorer window in the xTIMEcomposer. This will also cause the modules on which this application depends to be imported as well. 
+   #. Click on the ``app_object_localization`` item in the Explorer pane then click on the build icon (hammer) in xTIMEcomposer. Check the console window to verify that the application has built successfully.
+   #. There will be quite a number of warnings of the form ``bidirectional buffered port not supported in hardware``. These can be safely ignored in this case.
 
 For help in using xTIMEcomposer, try the xTIMEcomposer tutorial, which you can find by selecting Help->Tutorials from the xTIMEcomposer menu.
 
-Note that the Developer Column in the xTIMEcomposer on the right hand side of your screen provides information on the xSOFTip components you are using. Select the module_display_controller component in the Project Explorer, and you will see its description together with API documentation. Having done this, click the `back` icon until you return to this quickstart guide within the Developer Column.
+Note that the Developer Column in the xTIMEcomposer on the right hand side of your screen provides information on the xSOFTip components you are using. By way of example, select the module_display_controller component in the Project Explorer, and you will see its description together with API documentation. Having done this, click the `back` icon (or locate and click on the ``Object localization Demo`` item again) until you return to this quickstart guide within the Developer Column.
 
 Run the Application
 +++++++++++++++++++
 
-Now that the application has been compiled, the next step is to run it on the sliceKIT Core Board using the tools to load the application over JTAG (via the xTAG-2 and xTAG Adapter card) into the xCORE multicore microcontroller.
+Now that the application has been compiled, the next step is to run it on the sliceKIT Core Board using the tools to load the application over JTAG (via the XTAG2 and Xtag Adapter card) into the xCORE multicore microcontroller.
 
-   #. Select the file ``app_display_controller_demo.xc`` in the ``app_display_controller_demo`` project from the Project Explorer.
+   #. Select the file ``app_object_localization.xc`` in the ``app_object_localization`` project from the Project Explorer.
    #. Click on the ``Run`` icon (the white arrow in the green circle). 
-   #. At the ``Select Device`` dialog select ``XMOS xTAG-2 connect to L1[0..1]`` and click ``OK``.
-   #. Wait until the images have loaded over the xTAG connector from the host, this should take approximately 21 seconds.
-   #. There should be a series of 6 images for transition from one to another.
-   #. Once the first image is displayed, a message is displayed on the console to prompt the user to touch any of the corners or the center of LCD screen for watching different transition effects.
-
+   #. At the ``Select Device`` dialog select ``XMOS XTAG-2 connect to L1[0..1]`` and click ``OK``.
+   #. Wait until the images have loaded over the XTAG connector from the host. This may take 30 seconds or more, since they are being loaded over the serial JTAG connection via the XTAG2. There is a series of five images to be processed for object localization.
+   #. Once the first processed image is displayed, a message is displayed on the console to prompt the user to touch the LCD screen for displaying the remaining processed images one after another. Note that some statistics pertaining to the time take to process each of the images and thus the effective frame rate is also displayed in the console window at this point.
+   #. The objects in the images are shown by green boxes on the processed images.
+   #. The next image is the binarized version of the previous image after morphological closing. The subsequent images displayed are the processed images of the remaining four images.
 
 Next Steps
 ++++++++++
 
- #. Try changing the files that are loaded from the host. To do this, generate an image of 480 by 272 pixels, save it in ``tga`` format uncompressed in "top left" format ("bottom left" will also work but the image will have to be upside-down). Save the file(s) into ``the app_display_controller_demo`` directory within your workspace. Now, increment the ``IMAGE_COUNT`` define to 7 and add the name of your new image to the array ``images``. Ensure the filename is less than 30 characters long.
- #. Each transition has a frame count that configures the speed of the transition, try adjusting them and observe the results. To do this take a look at the API for the display controller. Note how each of the transition effects have a ``frame_count`` parameter. This parameter specifies how many frames the transition should take.
- #. Try writing an exciting transition effect. To do this, begin with the template shown below and refer to the Display Controller API documentation.
-    ::
-
-      static void transition_exciting_impl(chanend server, unsigned next_image_fb,
-         unsigned image_from, unsigned image_to, unsigned line) {
-         //insert code here
-      }
-      unsigned transition_exciting(chanend server, unsigned frame_buf[2],
-        unsigned from, unsigned to, unsigned frames, unsigned cur_fb_index) {
-        unsigned next_fb_index;
-        for (unsigned frame = 0; frame < frames; frame++) {
-          next_fb_index = (cur_fb_index + 1) & 1;
-          for (unsigned line = 0; line < LCD_HEIGHT; line++)
-            transition_exciting_impl(server, frame_buf[next_fb_index], from, to, line);
-          frame_buffer_commit(server, frame_buf[next_fb_index]);
-          cur_fb_index = next_fb_index;
-        }
-        return cur_fb_index;
-      }
-
-
+  #. First examine the structure of the application code. Navigate to the ``src`` directory of the ``app_object_localization`` item in the Project Explorer within xTIMEcomposer and find the ``app_object_localization.xc`` file and double-click it so it opens in the editor window. Scroll right to the bottom of the file and note the calls made in the ``par{}`` block at the bottom. The display_manager, display_controller, lcd_server and sdram_server calls instantiate the various supporting elements of this demo application within their own logical cores. The three components for the object localization functionality are to be found within the function called ``app``. Find this function by scrolling up in the file, and then note that there is another ``par{}`` block in the app() function which creates a new instance of each of the three pipeline processing components for each of the source images, with the logical core resources being returned at the end of processing each image. 
+  #. Try changing the files that are loaded from the host. To do this, generate an image (which should have bright objects on a dark background and vice versa), save it in ``tga`` format uncompressed. Save the file(s) into ``images`` folder of ``app_object_localization`` directory within your workspace. Now, change the ``IMAGE_COUNT`` and add the name of your new image to the array ``images`` defined in ``app_conf.h``. Ensure the filename is less than 30 characters long.
+  #. If the images contains dark objects on a bright background, the define ``OBJECT_LOCALIZATION_BRIGHT_OBJ_DARK_BG`` in ``binarisation_conf.h`` should be assigned the value 0. 
+  #. The colour of bounding boxes on objects can be changed from green by redefining ``BOX_COLOUR``. 
+  #. ``SIZE_THRESHOLD`` in ``app_conf.h`` controls the size in pixels of spurious objects to be ignored. 
+  #. Assign 0 to ``OBJECT_LOCALIZATION_NUM_DILATE`` and ``OBJECT_LOCALIZATION_NUM_ERODE`` in ``morph_conf.h`` to check the binary image resulting from binarisation and before applying morphological closing.
 
     

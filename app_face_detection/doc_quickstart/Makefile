@@ -1,7 +1,7 @@
 all: html
 
-SPHINX_PROJECT_NAME = Display Controller Demo Quickstart Guide
+SPHINX_PROJECT_NAME = Object Localization Demo Quickstart Guide
 VERSION = 0.1
-SOURCE_INCLUDE_DIRS = ../../app_display_controller_demo
+SOURCE_INCLUDE_DIRS = ../app_object_localization
 XDOC_DIR ?= ../../../xdoc
 include $(XDOC_DIR)/Makefile.inc
