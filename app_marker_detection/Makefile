@@ -9,8 +9,9 @@ TARGET = SLICEKIT-L2
 APP_NAME = app_marker_detection
 
 # The USED_MODULES variable lists other module used by the application.
-USED_MODULES = module_image_sensor_sdram module_object_localization_sdram module_sdram_multiclient module_slicekit_support
-
+USED_MODULES = module_image_sensor module_object_localization_sdram module_sdram module_slicekit_support
+# module_image_sensor is in the direct_sdram_access branch of sc_image_sensor
+# module_sdram is in the multi_client branch of sc_sdram_burst
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
