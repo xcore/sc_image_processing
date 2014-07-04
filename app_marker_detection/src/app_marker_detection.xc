@@ -133,7 +133,7 @@ void app(chanend c_sdram[], streaming chanend c_img)
 
 
 int main(){
-	chan c_dc,c_sdram[SDRAM_CLIENT_COUNT];
+	chan c_sdram[SDRAM_CLIENT_COUNT];
 	streaming chan c_img_sen;
 
 	par{
