@@ -30,13 +30,15 @@ void bayer_testbench_downstream(interface pipeline_interface server apm){
 
                 index1 = 1-index1;
                 if (row==0){
-                    row++;
-                    row%=IMG_HEIGHT;
                     (*mtdata).height = IMG_HEIGHT;
                     (*mtdata).width = IMG_WIDTH;
                     flag = 1;
                 }
                 else flag = 0;
+
+                row++;
+                row%=IMG_HEIGHT;
+
 
             break;
 
